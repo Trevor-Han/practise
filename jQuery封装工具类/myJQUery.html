@@ -124,6 +124,22 @@
     lazyLoad();
     window.addEventListener("scroll",myjQuery.Throttle(lazyLoad,500,1000),false);
 
+let str = "asssssjdsskasssalssdkjsssdss";
+var arr = "";
+for(let i = 0; i < str.length; i++){
+    if (arr.indexOf(str[i])=== -1){
+        arr += str[i];
+        console.log(arr);
+    }
+}
+
+for(let i = 0; i < arr.length;i++){
+    for(let j = 0; j < str.length; j++){
+        if (arr[i] ==str[j]){
+            console.log(arr[i]);
+        }
+    }
+}
 </script>
 </body>
 </html>
