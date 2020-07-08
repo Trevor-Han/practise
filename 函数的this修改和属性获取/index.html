@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>点击</button>
+<script>
+    let button = document.querySelector("button");
+
+    button.onclick = debounce(test);
+function test(event) {
+    console.log(event);
+}
+    function debounce(fn) {
+        return function () {
+            let self = this;
+            let args = arguments;
+            fn.apply(self, args);//修改this和元素获取
+        }
+    }
+
+
+    /*  button.onclick = function () {
+          // test();
+          console.log(this); //button
+      }*/
+</script>
+</body>
+</html>
