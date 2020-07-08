@@ -5,7 +5,6 @@
     Myjquery.prototype = {
         constructor:Myjquery,
         init:function init() {},
-
         //懒加载
         Lazyload:function Lazyload() {
             let images = document.getElementsByTagName('img');
