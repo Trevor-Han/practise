@@ -54,14 +54,22 @@
    };*/
     //示例如下：
     oFlex.onclick = function () {
-        easeAnimation(oQuote,{bottom:100},function () {
+        lineAnimation({
+            ele:oQuote,
+            obj:{"bottom":100},
+
+        },function () {
             oBack.onclick = function () {
-                easeAnimation(oQuote,{bottom:-480});
-            };
+                lineAnimation({
+                    ele:oQuote,
+                    obj:{"bottom":-480},
+                    stepIn:0.6,
+                    sheep:50
+                })
+            }
         });
     };
     function easeAnimation(ele, obj, fn) {
-        // console.log(ele.timerId);
         clearInterval(ele.timerId);
         ele.timerId = setInterval(function () {
             let flag = true;
@@ -83,6 +91,34 @@
                 fn && fn();
             }
         },50);
+    }
+    function lineAnimation(res,fn) {
+        let ele = res.ele;
+        let obj = res.obj;
+        let stepIn = res.stepIn || 0.3;
+        let sheep = res.sheep || 100;
+
+        clearInterval(ele.timerId);
+        ele.timerId = setInterval(function () {
+            let flag = true;
+            for(let key in obj){
+                let target = obj[key];
+                let style = getComputedStyle(ele);
+                let begin = parseInt(style[key]) || 0;
+                let step = (target - begin) * stepIn;
+                begin += step;
+                if(Math.abs(Math.floor(step)) > 1){
+                    flag = false;
+                }else{
+                    begin = target;
+                }
+                ele.style[key] = begin + "px";
+            }
+            if(flag){
+                clearInterval(ele.timerId);
+                fn && fn();
+            }
+        },sheep);
     }
 </script>
 </body>
