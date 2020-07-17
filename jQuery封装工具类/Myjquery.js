@@ -6,8 +6,10 @@
         constructor:Myjquery,
         init:function init() {},
         //懒加载
-        Lazyload:function Lazyload() {
-            let images = document.getElementsByTagName('img');
+        Lazyload:function Lazyload(oDIV) {
+            let oBox    = document.querySelector(oDIV);
+            let images = oBox.getElementsByTagName('img');
+            // console.log(images);
             let len    = images.length;
             let n      = 0;      //存储图片加载到的位置，避免每次都从第一张图片开始遍历
             return function() {
@@ -50,6 +52,7 @@
             this.age = age;
             console.log(this.id, this.name, this.age);
         },
+
     };
     Myjquery.prototype.init.prototype = Myjquery.prototype;
     window.Myjquery = window.$ = Myjquery;

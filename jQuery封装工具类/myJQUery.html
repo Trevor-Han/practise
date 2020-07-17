@@ -13,20 +13,22 @@
     </style>
 </head>
 <body>
-<img src="images/loading.gif" data-src="images/balloon.png">
-<img src="images/loading.gif" data-src="images/balloon.png">
-<img src="images/loading.gif" data-src="images/balloon.png">
-<img src="images/loading.gif" data-src="images/balloon.png">
-<img src="images/loading.gif" data-src="images/balloon2.png">
-<img src="images/loading.gif" data-src="images/balloon2.png">
-<img src="images/loading.gif" data-src="images/balloon2.png">
-<img src="images/loading.gif" data-src="images/balloon2.png">
-<img src="images/loading.gif" data-src="images/balloon2.png">
-<img src="images/loading.gif" data-src="images/balloon3.png">
-<img src="images/loading.gif" data-src="images/balloon3.png">
-<img src="images/loading.gif" data-src="images/balloon3.png">
-<img src="images/loading.gif" data-src="images/balloon3.png">
-<img src="images/loading.gif" data-src="images/balloon3.png">
+<div class="box">
+    <img src="images/loading.gif" data-src="images/balloon.png">
+    <img src="images/loading.gif" data-src="images/balloon.png">
+    <img src="images/loading.gif" data-src="images/balloon.png">
+    <img src="images/loading.gif" data-src="images/balloon.png">
+    <img src="images/loading.gif" data-src="images/balloon2.png">
+    <img src="images/loading.gif" data-src="images/balloon2.png">
+    <img src="images/loading.gif" data-src="images/balloon2.png">
+    <img src="images/loading.gif" data-src="images/balloon2.png">
+    <img src="images/loading.gif" data-src="images/balloon2.png">
+    <img src="images/loading.gif" data-src="images/balloon3.png">
+    <img src="images/loading.gif" data-src="images/balloon3.png">
+    <img src="images/loading.gif" data-src="images/balloon3.png">
+    <img src="images/loading.gif" data-src="images/balloon3.png">
+    <img src="images/loading.gif" data-src="images/balloon3.png">
+</div>
 <!--<script>
     function throttle(fn, delay, atleast) {//函数绑定在 scroll 事件上，当页面滚动时，避免函数被高频触发，
         var timeout = null,//进行去抖处理
@@ -115,31 +117,9 @@
 </script>-->
 <script>
     let myjQuery = new Myjquery();
-    myjQuery.myText({
-        id:1,
-        name:"wl",
-        age:32,
-    });
-    let lazyLoad = myjQuery.Lazyload();
+    let lazyLoad = myjQuery.Lazyload(".box");
     lazyLoad();
-    window.addEventListener("scroll",myjQuery.Throttle(lazyLoad,500,1000),false);
-
-let str = "asssssjdsskasssalssdkjsssdss";
-var arr = "";
-for(let i = 0; i < str.length; i++){
-    if (arr.indexOf(str[i])=== -1){
-        arr += str[i];
-        console.log(arr);
-    }
-}
-
-for(let i = 0; i < arr.length;i++){
-    for(let j = 0; j < str.length; j++){
-        if (arr[i] ==str[j]){
-            console.log(arr[i]);
-        }
-    }
-}
+    window.addEventListener("scroll",myjQuery.Throttle(lazyLoad,200,500),false);
 </script>
 </body>
 </html>
