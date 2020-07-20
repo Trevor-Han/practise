@@ -5,7 +5,7 @@
 .box{
     padding-top: 10px;
     padding-left: 10px;
-    background: red;
+    background: #16c196;
     float: left;
 }
 .box>img{

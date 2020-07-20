@@ -8,26 +8,29 @@
         img {
             display: block;
             margin-bottom: 50px;
+            transition: opacity 2s ease-in-out;
+            opacity: 0.4
 
         }
     </style>
 </head>
 <body>
 <div class="box">
-    <img src="images/loading.gif" data-src="images/balloon.png">
-    <img src="images/loading.gif" data-src="images/balloon.png">
-    <img src="images/loading.gif" data-src="images/balloon.png">
-    <img src="images/loading.gif" data-src="images/balloon.png">
-    <img src="images/loading.gif" data-src="images/balloon2.png">
-    <img src="images/loading.gif" data-src="images/balloon2.png">
-    <img src="images/loading.gif" data-src="images/balloon2.png">
-    <img src="images/loading.gif" data-src="images/balloon2.png">
-    <img src="images/loading.gif" data-src="images/balloon2.png">
-    <img src="images/loading.gif" data-src="images/balloon3.png">
-    <img src="images/loading.gif" data-src="images/balloon3.png">
-    <img src="images/loading.gif" data-src="images/balloon3.png">
-    <img src="images/loading.gif" data-src="images/balloon3.png">
-    <img src="images/loading.gif" data-src="images/balloon3.png">
+    <p><img src="images/loading.gif" data-src="images/balloon.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon2.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon2.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon2.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon2.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon2.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon2.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon3.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon3.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon3.png" alt="none more">
+        <img src="images/loading.gif" data-src="images/balloon3.png" alt="none more">
+    </p>
 </div>
 <!--<script>
     function throttle(fn, delay, atleast) {//函数绑定在 scroll 事件上，当页面滚动时，避免函数被高频触发，
@@ -119,7 +122,7 @@
     let myjQuery = new Myjquery();
     let lazyLoad = myjQuery.Lazyload(".box");
     lazyLoad();
-    window.addEventListener("scroll",myjQuery.Throttle(lazyLoad,200,500),false);
+    window.addEventListener("scroll",myjQuery.Throttle(lazyLoad,300,800),false);
 </script>
 </body>
 </html>

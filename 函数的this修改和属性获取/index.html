@@ -5,13 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<button>点击</button>
+<button class="but1">点击</button>
+<button class="but2">点击</button>
 <script>
-    let button = document.querySelector("button");
+    let but1 = document.querySelector(".but1");
+    let but2 = document.querySelector(".but2");
 
-    button.onclick = debounce(test);
+    but1.onclick = debounce(test);
+    but2.onclick = function () {
+        test();
+    };
+
 function test(event) {
     console.log(event);
+    console.log(this);
 }
     function debounce(fn) {
         return function () {

@@ -6,10 +6,9 @@
         constructor:Myjquery,
         init:function init() {},
         //懒加载
-        Lazyload:function Lazyload(oDIV) {
-            let oBox    = document.querySelector(oDIV);
-            let images = oBox.getElementsByTagName('img');
-            // console.log(images);
+        Lazyload:function Lazyload(odiv) {
+            let box    = document.querySelector(odiv);
+            let images = box.getElementsByTagName("img");
             let len    = images.length;
             let n      = 0;      //存储图片加载到的位置，避免每次都从第一张图片开始遍历
             return function() {
@@ -18,7 +17,13 @@
                 for(let i = n; i < len; i++) {
                     if(images[i].offsetTop < seeHeight + scrollTop) {
                         if(images[i].getAttribute('src') === 'images/loading.gif') {
-                            images[i].src = images[i].getAttribute('data-src');
+                            if(images[i].style.opacity!= undefined){
+                                images[i].src = images[i].getAttribute('data-src');
+                                images[i].style.opacity = 1;
+                            }
+                            if(images[i].getAttribute('data-src').complete === false){
+                                images[i].src = "images/loading.gif";
+                            }
 
                         }
                         n = n + 1;
