@@ -30,13 +30,14 @@
 <script src="js/jquery-1.11.0.min.js"></script>
 <script>
     $(function () {
+        console.log(height);
         let $nth = $(".organ-list>ul>li:nth-of-type(4n)");
         $nth.hover(function () {
             $(this).addClass("m2");
             $(this).css("z-index","499");
         },function () {
             $(this).css("z-index","299");
-        })
+        });
     })
 </script>
 </body>
