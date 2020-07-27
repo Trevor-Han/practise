@@ -30,14 +30,35 @@
 
 <script>
     let clientHeight = document.documentElement.clientHeight;
+    console.log(clientHeight);
     let oDiv2 = document.querySelector(".d2");
     let oDiv2Height = oDiv2.clientHeight;
-    window.onscroll = function () {
-    let windowScroll = document.documentElement.scrollTop;
-    let oHeight =  windowScroll / oDiv2Height;
-        console.log(oHeight);
+    window.onscroll = throttle(function () {
+        let windowScroll = document.documentElement.scrollTop;
+        let oHeight =  oDiv2Height - windowScroll;
+        if (oHeight <= clientHeight / 2){
+            oDiv2.style.background = "#16c196";
+        }
+        else {
+            oDiv2.style.background = "red";
+        }
+    },100);
+    function throttle(fn, delay) { // fn = test
+        let timerId = null;
+        let flag = true;
+        return function () {
+            if(!flag) return;
+            flag = false;
+            let self = this;
+            //arguments拿到函数参数
+            let args = arguments;
+            timerId && clearTimeout(timerId);
+            timerId = setTimeout(function () {
+                flag = true;
+                fn.apply(self, args);
+            }, delay || 1000);
+        }
     }
-
 </script>
 </body>
 </html>
