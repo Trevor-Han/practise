@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>digui</title>
+</head>
+<body>
+<script>
+    var arrList = [1,2,3,5,100,500,10000,10000,1000,10000002];
+    //for循环测试
+    function forTest(){
+        console.time("for循环");
+        for(let i in arrList){
+            console.log(((arrList[i] + arrList[i]) * 5 - arrList[i])/arrList[i])
+        }
+        console.timeEnd("for循环");
+    }
+    //递归遍历测试
+    function recursive() {
+        console.time("递归遍历");
+        const testFun = function (i) {
+            console.log(((arrList[i] + arrList[i]) * 5 - arrList[i])/arrList[i])
+            if(i == arrList.length - 1){
+                return
+            }
+            i++;
+            testFun(i)
+        }
+        testFun(0);
+        console.timeEnd("递归遍历");
+    }
+    forTest();
+    recursive();
+</script>
+</body>
+</html>
