@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-画三角</title>
+    <style>
+        div {
+            width:0px;
+            height:0px;
+            border:50px solid transparent;
+            border-top:50px solid red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    function cssStyle2DomStyle(sName) {
+        if(typeof sName !== "string"){
+            return
+        }
+        let str = sName.split("-").slice(1);
+        console.log(str);
+        for(let i=1;i<str.length;i++){
+            str[i] = str[i].slice(0,1).toUpperCase()+str[i].slice(1)
+        }
+        return str.join("");
+
+    }
+    let a = cssStyle2DomStyle("-webkit-background-image");
+    console.log(a);
+</script>
+</body>
+</html>
