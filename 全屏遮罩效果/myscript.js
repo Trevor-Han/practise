@@ -1,6 +1,9 @@
 $(function () {
     let count = 0;
+    let video = $(".video>video");
+    // console.log(video);
     $(".han-all").click(function () {
+        video.controls = true;
         let myScroll = new IScroll('.han-info');
             count++;
             if(count%2 == 1){

@@ -15,16 +15,10 @@
                 let seeHeight = document.documentElement.clientHeight;
                 let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                 for(let i = n; i < len; i++) {
-                    if(images[i].offsetTop < seeHeight + scrollTop) {
+                    console.log(images[0].clientHeight);
+                    if(images[i].offsetTop - (images[0].clientHeight * 3) < seeHeight + scrollTop ) {
                         if(images[i].getAttribute('src') === 'images/loading.gif') {
-                            if(images[i].style.opacity!= undefined){
-                                images[i].src = images[i].getAttribute('data-src');
-                                images[i].style.opacity = 1;
-                            }
-                            if(images[i].getAttribute('data-src').complete === false){
-                                images[i].src = "images/loading.gif";
-                            }
-
+                            images[i].src = images[i].getAttribute('data-src');
                         }
                         n = n + 1;
                     }
