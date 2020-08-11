@@ -14,21 +14,63 @@
 </head>
 <body>
 <div></div>
-<script>
-    function cssStyle2DomStyle(sName) {
-        if(typeof sName !== "string"){
-            return
-        }
-        let str = sName.split("-").slice(1);
-        console.log(str);
-        for(let i=1;i<str.length;i++){
-            str[i] = str[i].slice(0,1).toUpperCase()+str[i].slice(1)
-        }
-        return str.join("");
+<!--<script>-->
+<!--    function cssStyle2DomStyle(sName) {-->
+<!--        if(typeof sName !== "string"){-->
+<!--            return-->
+<!--        }-->
+<!--        let str = sName.split("-").slice(1);-->
+<!--        console.log(str);-->
+<!--        for(let i=1;i<str.length;i++){-->
+<!--            str[i] = str[i].slice(0,1).toUpperCase()+str[i].slice(1)-->
+<!--        }-->
+<!--        return str.join("");-->
 
+<!--    }-->
+<!--    let a = cssStyle2DomStyle("-webkit-background-image");-->
+<!--    console.log(a);-->
+<!--</script>-->
+<script>
+    function fun(n) {
+        let i,j,x=0,y=0;
+        for (i=0;i<n;++i){
+            for (j=i+1;j<n;++j){
+                ++x;
+                console.log(1);
+            }
+        }
     }
-    let a = cssStyle2DomStyle("-webkit-background-image");
-    console.log(a);
+    fun(5);
+
+    function fun1(n) {
+        let m = 0,i,j;
+        for(i = 1;i <= n;i++){
+            for(j = 1;j <= 2 * i;j++)
+            {
+                m++;
+                console.log(1);
+            }
+        }
+    }
+    fun1(5);
+    function fun2(n) {
+        for (let i = 1; i < n; i*=2)
+            console.log(1);
+    }
+    fun2(5);
+
+    function fun3(n) {
+        if (n<1){
+            return 1;
+        }
+        else {
+            console.log(2);
+            return n*fun3(n-1);
+
+        }
+    }
+    let i = fun3(3);
+    console.log(i);
 </script>
 </body>
 </html>

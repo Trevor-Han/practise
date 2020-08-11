@@ -78,6 +78,10 @@
     function autotype(ele) {
         let Text = $(ele);
         let str = Text.text();
+<script>
+ /*   $.fn.autotype = function() {
+        let $text = $(this);
+        let str = $text.html(); //返回被选 元素的内容
         let index = 0;
         clearInterval(timer);
         timer = setInterval(function () {
@@ -207,6 +211,7 @@ autotype(".autotype")*/
             $(".autotype p").text(obj.substr(0,str));
              str< len && autotype(obj,str);
             },80)}
+// autotype(".autotype")
 </script>
 </body>
 </html>

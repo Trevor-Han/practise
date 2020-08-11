@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+        ul{
+            width: 100%;
+            height: 100%;
+            list-style: none;
+        }
+        li{
+            width: 100%;
+            height: 120px;
+            margin-top: 20px;
+            background: #333;
+            text-align: center;
+            line-height: 120px;
+            font-size: 48px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<section class="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</section>
+<div>
+    <h1 class="typer-target">
+        AutoTyper
+    </h1>
+</div>
+<button type="button" id="run" class="btn-run">Run!</button>
+<button type="button" id="stop" class="btn-run">stop!</button>
+<script src="../js/jquery.js"></script>
+<script>
+    $(function () {
+        let title = ["1234568686","789666666666","abcbmbmmbmbmbb"];
+       $(".box li").on("mouseenter",function () {
+           let index = $(this).index();
+           $(".typer-target").html(title[index]);
+           stop();
+           autotype(".typer-target")
+       });
+
+        function autotype(id) {
+            let $text = $(id);
+            let str = $text.html(); //返回被选 元素的内容
+            let index = 0;
+            let x = $text.html('');
+            //$text.html()和$(this).html('')有区别
+            let timer = setInterval(function() {
+                    //substr(index, 1) 方法在字符串中抽取从index下标开始的一个的字符
+                    let current = str.substr(index, 1);
+                    if (current == '<') {
+                        //indexOf() 方法返回">"在字符串中首次出现的位置。
+                        index = str.indexOf('>', index) + 1;
+                    } else {
+                        index++;
+                    }
+                    //console.log(["0到index下标下的字符",str.substring(0, index)],["符号",index & 1 ? '_': '']);
+                    //substring() 方法用于提取字符串中介于两个指定下标之间的字符
+                    $text.html(str.substring(0, index) + (index & 1 ? '_': ''));
+                    if (index >= str.length) {
+                        $text.html(str.substring(0, index));
+                        clearInterval(timer);
+                    }
+                },
+                100);
+        }
+
+    });
+</script>
+</body>
+</html>

@@ -112,7 +112,7 @@
     window.addEventListener('scroll', (e) => {
         let $chipMa = document.querySelector("#chip-section");
         let $chip = document.querySelector("#chip-con");
-        let scrolled = document.documentElement.scrollTop*1.2 / ($chipMa.scrollHeight - $chip.clientHeight);
+        let scrolled = document.documentElement.scrollTop * 1.2 / ($chipMa.scrollHeight - $chip.clientHeight);
 /*        console.log(document.documentElement.scrollTop); //200,1671
         console.log(document.documentElement.scrollHeight);//3000
         console.log($chipMa.scrollHeight);//3000
@@ -126,7 +126,9 @@
         let $A13 = document.querySelector('#A13');
         let $A13TextBg = document.querySelector('#the-chip .text-bg');
 
-        $theChip.style.width = $theChip.style.height = document.documentElement.clientWidth * 20 * (scrolled * scrolled * scrolled) + 'px';
+        $theChip.style.width =
+        $theChip.style.height =
+        document.documentElement.clientWidth * 20 * (scrolled * scrolled * scrolled) + 'px';
 
         if (scrolled <= 0.1) {
             $h1.style.opacity = (0.1 - scrolled) / 0.1;
