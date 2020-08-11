@@ -6,35 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-<div id="pic">
-    这是一段打字机效果的文字
-</div>
-<script src="../js/jquery.js"></script>
+
+<main>
+    <div>
+        <h1 class="typer-target">
+            AutoTyper<span>.js</span>
+        </h1>
+    </div>
+
+    <button type="button" id="run" class="btn-run">Run!</button>
+</main>
+
+<script src="autotyper.js"></script>
 <script>
-    (function ($) {
-        $.fn.typewriter = function () {
-            this.each(function () {
-                var $ele = $(this),
-                    str = $ele.html(),
-                    progress = 0;
-                $ele.html('');
-                var timer = setInterval(function () {
-                    var current = str.substr(progress, 1);
-                    if (current == '<') {
-                        progress = str.indexOf('>', progress) + 1;
-                    } else {
-                        progress++;
-                    }
-                    $ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
-                    if (progress >= str.length) {
-                        clearInterval(timer);
-                    }
-                }, 150);
-            });
-            return this;
-        };
-    })(jQuery);
-    $("#pic").show().typewriter(50);
+    // custom options
+    var options = {
+        selector: ".typer-target", // target element selector
+        words: ["Hello World..."], // words/sentences that will be auto typed
+        charSpeed: 85, // letter typing animation speed
+        delay: 2100, // word/sentence typing animation delay
+        loop: false, // if loop is activated, autoTyper will start over
+        flipflop: false // if flipflop is activated, letters which are typed animated will be removed ony by one animated
+    };
+
+    var typer = new autoTyper(options);
+
+    document.getElementById("run").addEventListener("click", function(e) {
+        typer.start();
+    });
 </script>
+
 </body>
 </html>

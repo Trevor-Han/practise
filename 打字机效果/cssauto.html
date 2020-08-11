@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @keyframes typing { from { width: 0; } }
+        @keyframes blink-caret { 50% { border-color: transparent; } }
+
+
+        h1 {
+            font: bold 200% Consolas, Monaco, monospace;
+            border-right: .1em solid;
+            width: 30em; /* fallback */
+            /* width: 30ch; # of chars */
+            margin: 2em 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2s steps(30, end), /* # of steps = # of chars */    /*animation: typing 20s steps(30, end),*//*英文速度*/
+
+            blink-caret .5s step-end infinite alternate;
+        }
+    </style>
+</head>
+<body>
+<h1> 一个小小前端工程师的博客一步一步， 一个字一个字的打出来，哦蕾蕾~</h1>
+</body>
+</html>

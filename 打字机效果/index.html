@@ -3,47 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            list-style: none;
+        }
+        li{
+            width: 100%;
+            height: 120px;
+            background: #333;
+            text-align: center;
+            line-height: 120px;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 48px;
+        }
+        p{
+            width: 100%;
+            text-align: center;
+            font-size: 36px;
+        }
+
+    </style>
 
 </head>
 <body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
 <div class="autotype" id="autotype">
     <p>一场雨把我困在这里</p>
-    <br>
-    <p>你温柔的表情</p>
-    <p>会让我伤心</p>
-    <br>
-    <p>六月的雨，只是无情的你~</p>
 </div>
-
 <script src="../js/jquery.js"></script>
+<script src="autotyper.js"></script>
 <script>
-/*    $.fn.autotype = function() {
-        let $text = $(this);
-        let str = $text.html(); //返回被选 元素的内容
-        let index = 0;
-        let x = $text.html('');
-        //$text.html()和$(this).html('')有区别
-        let timer = setInterval(function() {
-                //substr(index, 1) 方法在字符串中抽取从index下标开始的一个的字符
-                let current = str.substr(index, 1);
-                if (current == '<') {
-                    //indexOf() 方法返回">"在字符串中首次出现的位置。
-                    index = str.indexOf('>', index) + 1;
-                } else {
-                    index++;
-                }
-                //console.log(["0到index下标下的字符",str.substring(0, index)],["符号",index & 1 ? '_': '']);
-                //substring() 方法用于提取字符串中介于两个指定下标之间的字符
-                $text.html(str.substring(0, index) + (index & 1 ? '_': ''));
-                if (index >= str.length) {
-                    clearInterval(timer);
-                }
-            },
-            100);
-    };
-    $(".autotype").autotype();*/
+$(function () {
+    let title = ["很多读者问过我一个相同的问题：看到一个作品，觉得很好，但是具体哪里好，就说不上来了！",
+        "今天带着这个问题，我们一起来聊聊如何把一个作品进行拆解，然后系统的去分析好与坏。",
+        "当然我们只是单纯的从视觉角度来分析，先能把视觉层面的分析明白就很不错了。"];
+    $("ul>li").on("mouseenter",function () {
+        let index = $(this).index();
+        $(".autotype>p").text(title[index]).autotype();
+    });
+});
+$.fn.autotype = function() {
+    let $text = $(this);
+    let str = $text.text();
+    let index = 0;
+    let timer = setInterval(function() {
 
-function autotype(id) {
+            let current = str.substr(index, 1);
+            if (current == '<') {
+                index = str.indexOf('>', index) + 1;
+            } else {
+                index++;
+            }
+            $text.text(str.substring(0, index) + (index & 1 ? '_': ''));
+            if (index >= str.length) {
+                clearInterval(timer);
+            }
+        },
+        100);
+};
+
+
+/*$.fn.autotype = function() {
+    let $text = $(this);
+    let str = $text.text(); //返回被选中元素的内容
+    let index = 0;
+    let x = $text.html('');
+    let timer = null;
+    //$text.html()和$(this).html('')有区别
+    clearInterval(timer);
+    timer = setInterval(function() {
+            //substr(index, 1) 方法在字符串中抽取从index下标开始的一个的字符
+            let current = str.substr(index, 1);
+            if (current == '<') {
+                //indexOf() 方法返回">"在字符串中首次出现的位置。
+                index = str.indexOf('>', index) + 1;
+            } else {
+                index++;
+            }
+            //console.log(["0到index下标下的字符",str.substring(0, index)],["符号",index & 1 ? '_': '']);
+            //substring() 方法用于提取字符串中介于两个指定下标之间的字符
+            $text.text(str.substring(0, index) + (index & 1 ? '_': ''));
+            if (index >= str.length) {
+                clearInterval(timer);
+            }
+        },
+        100);
+};*/
+/* let options = {
+          selector: ".autotype p", // target element selector
+          words: [title[index]], // words/sentences that will be auto typed
+          charSpeed: 85, // letter typing animation speed
+          delay: 2100, // word/sentence typing animation delay
+          loop: false, // if loop is activated, autoTyper will start over
+          flipflop: false // if flipflop is activated, letters which are typed animated will be removed ony by one animated
+      };
+      let typer = new autoTyper(options);
+      $(".autotype>p").text(title[index]);
+      typer.start();*/
+/*function autotype(id) {
     let $text = $(id);
     let str = $text.html(); //返回被选 元素的内容
     let index = 0;
@@ -68,7 +138,8 @@ function autotype(id) {
         },
         100);
 }
-autotype(".autotype")
+autotype(".autotype")*/
+
 </script>
 </body>
 </html>
