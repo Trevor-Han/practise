@@ -200,18 +200,17 @@ autotype(".autotype")*/
         "当然我们只是单纯的从视觉角度来分析，先能把视觉层面的分析明白就很不错了。"];
     $("ul>li").on("mouseenter",function () {
         let index = $(this).index();
-        autotype(title[index]);
+        autotype(".autotype>p",title[index]);
     });
-    function autotype(obj,ele){
+    function autotype(cal,obj,ele){
         let len = obj.length;
-        let str = ele||0;
+        let str = ele || 0;
         clearInterval(timer);
         timer =setInterval(function(){
            str++;
-            $(".autotype p").text(obj.substr(0,str));
-             str< len && autotype(obj,str);
+            $(cal).text(obj.substr(0,str));
+             str< len && autotype(cal,obj,str);
             },80)}
-// autotype(".autotype")
 </script>
 </body>
 </html>

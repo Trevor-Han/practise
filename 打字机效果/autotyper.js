@@ -2,22 +2,16 @@
   // define the plugin in global variable to make it accessible from outside
   window.autoTyper = function(opts) {
     // default options
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     var options = {
       selector: "",
       words: [],
       charSpeed: 85,
       delay: 2100,
-<<<<<<< Updated upstream
       loop: true,
       flipflop: true,
-=======
       loop: false,
       flipflop: false,
->>>>>>> Stashed changes
       position: 0,
       currentWord: "",
       element: null,
