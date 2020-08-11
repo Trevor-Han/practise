@@ -29,6 +29,7 @@
             width: 100%;
             text-align: center;
             font-size: 36px;
+            opacity: 1;
         }
 
     </style>
@@ -45,23 +46,62 @@
 </div>
 <script src="../js/jquery.js"></script>
 <script src="autotyper.js"></script>
-<script>
-$(function () {
+<!--<script>
+    // 获取当前时间并格式化
+   function time(){
+       let time = new Date();
+       let y = time.getFullYear();
+       let m = time.getMonth()+1;
+       let d = time.getDate();
+       let h = time.getHours();
+       let mi = time.getMinutes();
+       let s = time.getSeconds();
+       m = m<10?`0${m}`:m;
+       d = d<10?`0${d}`:d;
+       h = h<10?`0${h}`:h;
+       mi = mi<10?`0${mi}`:mi;
+       s = s<10?`0${s}`:s;
+       return `${y}-${m}-${d} ${h}：${mi}：${s}`;
+   }
+   let t = time();
+    console.log(t);
+    $(function () {
     let title = ["很多读者问过我一个相同的问题：看到一个作品，觉得很好，但是具体哪里好，就说不上来了！",
         "今天带着这个问题，我们一起来聊聊如何把一个作品进行拆解，然后系统的去分析好与坏。",
         "当然我们只是单纯的从视觉角度来分析，先能把视觉层面的分析明白就很不错了。"];
+    let timer = null;
     $("ul>li").on("mouseenter",function () {
         let index = $(this).index();
-        $(".autotype>p").text(title[index]).autotype();
+        $(".autotype>p").text(title[index]);
+        autotype(".autotype>p");
     });
+    function autotype(ele) {
+        let Text = $(ele);
+        let str = Text.text();
+        let index = 0;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            let current = str.substr(index,1);
+            if (current == "<"){
+                index = str.indexOf(">",index) + 1;
+            } else{
+                index ++;
+            }
+             Text.text(str.substring(0, index) + (index & 1 ? '_': ''));
+            if (index >= str.length) {
+                clearInterval(timer);
+            }
+        },100);
+
+    }
 });
-$.fn.autotype = function() {
+/*$.fn.autotype = function() {
     let $text = $(this);
     let str = $text.text();
     let index = 0;
     let timer = setInterval(function() {
-
             let current = str.substr(index, 1);
+            console.log(current);
             if (current == '<') {
                 index = str.indexOf('>', index) + 1;
             } else {
@@ -73,7 +113,7 @@ $.fn.autotype = function() {
             }
         },
         100);
-};
+};*/
 
 
 /*$.fn.autotype = function() {
@@ -139,7 +179,34 @@ $.fn.autotype = function() {
         100);
 }
 autotype(".autotype")*/
-
+    function v(i,o){
+       let r= i.length;
+       let c=o||0;
+       clearTimeout(t),
+           t=setTimeout(function(){
+            c++,
+            $(".autotype p").text(i.substr(0,c)),
+            c< r && v(i,c)
+           },80)}
+</script>-->
+<script>
+    let timer = null;
+    let title = ["很多读者问过我一个相同的问题：看到一个作品，觉得很好，但是具体哪里好，就说不上来了！",
+        "今天带着这个问题，我们一起来聊聊如何把一个作品进行拆解，然后系统的去分析好与坏。",
+        "当然我们只是单纯的从视觉角度来分析，先能把视觉层面的分析明白就很不错了。"];
+    $("ul>li").on("mouseenter",function () {
+        let index = $(this).index();
+        autotype(title[index]);
+    });
+    function autotype(obj,ele){
+        let len = obj.length;
+        let str = ele||0;
+        clearInterval(timer);
+        timer =setInterval(function(){
+           str++;
+            $(".autotype p").text(obj.substr(0,str));
+             str< len && autotype(obj,str);
+            },80)}
 </script>
 </body>
 </html>
