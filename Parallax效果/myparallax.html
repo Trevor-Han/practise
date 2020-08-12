@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 750px;
+            margin: 0 auto;
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+        .scene{
+            position: absolute;
+            width: 105%;
+            top: -20px;
+            left: -20px;
+            overflow: hidden;
+        }
+        .dog{
+            position: absolute;
+            top:600px;
+            left: 250px;
+            z-index: 111;
+        }
+        .light{
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img  class="scene" src="../images/bg-scene-01_9c56fc.jpg" alt="">
+    <img  class="dog" src="../images/dog-scene-01_8098ad.png" alt="">
+    <img  class="light" src="../images/light-scene-01_bd4007.png" alt="">
+</div>
+
+<script>
+    document.querySelector(".box").addEventListener("mousemove",function (e) {
+        let oWidth  = e.clientX / parseInt(getComputedStyle(document.querySelector(".scene")).width, 10);
+        let oHeight = e.clientY / parseInt(getComputedStyle(document.querySelector(".scene")).height, 10);
+
+        document.querySelector(".dog").style.transform = calculateTransform(oWidth,oHeight,10);
+        document.querySelector(".light").style.transform = calculateTransform(oWidth,oHeight,-10);
+        document.querySelector(".scene").style.transform = calculateTransform(oWidth,oHeight,5);
+
+        function calculateTransform(width,height,offset) {
+            return `translate(${width * offset / 0.5}px, ${height * offset / 0.5}px)`;
+        }
+    })
+</script>
+</body>
+</html>

@@ -213,7 +213,7 @@
 <script>
 document.querySelector('#parallax_wrapper').addEventListener('mousemove', function (e) {
    let horizontal = e.clientX / parseInt(getComputedStyle(document.querySelector('#parallax_wrapper')).width, 10);
-   let vertical = e.clientY / parseInt(getComputedStyle(document.querySelector('#parallax_wrapper')).height, 10);
+    let vertical = e.clientY / parseInt(getComputedStyle(document.querySelector('#parallax_wrapper')).height, 10);
 
     document.querySelector('#parallax_bg').style.transform = calculateTransform(horizontal, vertical, 5);
     document.querySelector('#parallax_error_text').style.transform = calculateTransform(horizontal, vertical, 20);
