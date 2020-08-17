@@ -22,9 +22,9 @@
                 <div class="text"></div>
                 <div class="box4">
                     <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus</h1>
-                    <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus</h1>
-                    <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus</h1>
-                    <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus</h1>
+                    <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus1212</h1>
+                    <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus11</h1>
+                    <h1>Lorem ipsum dolor sit amet, ne mel vero impetus voluptatibus1222</h1>
                 </div>
             </div>
         </div>
@@ -40,6 +40,7 @@
             let scrollt = document.documentElement.scrollTop + document.body.scrollTop;
             if (scrollt >= wHeight-1000) {
                 type();
+                // autotype(".box4");
             }
         });
     });
@@ -47,13 +48,24 @@
     let str = $text.html();
     let index = 0;
     function type(){
+        let current = str.substr(0,index);
+        if (current == '<') {
+            //indexOf() 方法返回">"在字符串中首次出现的位置。
+            index = str.indexOf('', index) + 1;
+        } else {
+            index++;
+        }
         $text.html(str.substring(0,index++));
-        if(index > str.length) {
+        if(index >= str.length) {
             return;
         } else {
             setTimeout(type,500);
         };
+
     }
+
+
 </script>
+
 </body>
 </html>
