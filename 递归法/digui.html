@@ -3,9 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>digui</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: #000;
+
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <!--<script>
+        (function ($) {
+            "layout",
+                $.fn.layout = function (options) {
+                    console.log(111);
+                    let opts = $.extend({},$.fn.layout.default,options);
+                    return this.each(function () {
+                        let $this = $(this);
+                        let o = $.meta ? $.extend({},opts,$this.data()) : opts;
+                        // console.log(o);
+                    });
+                };
+            $.fn.layout.init = {};
+            $.fn.layout.cellback = function (data) {
+                if (typeof (o.success) == "function"){
+                    success(data);
+                }
+
+            };
+            $.fn.layout.defults = {
+
+            };
+        })(jQuery);
+        (function ($) {
+            "slider",
+                $.fn.slider = function (options) {
+                    console.log(222);
+                    let opts = $.extend({},$.fn.slider.default,options);
+                    return this.each(function () {
+                       let $this = $(this);
+                        let o =$.meta ? $.extend({},opts,$this.data()) : opts;
+                        // console.log(o);
+                    });
+                };
+            $.fn.slider.init = {};
+            $.fn.slider.cellback = function (data) {
+                if (typeof (o.success) == "function"){
+                    success(data);
+                }
+
+            };
+            $.fn.slider.defults = {
+            };
+        })(jQuery);
+    </script>-->
+    <script>
+        (function ($) {
+                $.fn.extend({
+                    "slider":function (options) {
+                        console.log(111);
+                        let opts = $.extend({},$.fn.layout.default,options);
+                        return this.each(function () {
+                            let $this = $(this);
+                            let o = $.meta ? $.extend({},opts,$this.data()) : opts;
+                        });
+                    }
+                })
+        })(jQuery);
+    </script>
 </head>
 <body>
+
+<div class="box"></div>
+
 <script>
+    $(".box").layout().slider();
+    // $(".box").slider();
+</script>
+<!--<script>
     var arrList = [1,2,3,5,100,500,10000,10000,1000,10000002];
     //for循环测试
     function forTest(){
@@ -31,6 +106,6 @@
     }
     forTest();
     recursive();
-</script>
+</script>-->
 </body>
 </html>

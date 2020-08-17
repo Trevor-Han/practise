@@ -54,5 +54,5 @@
 
     };
     Myjquery.prototype.init.prototype = Myjquery.prototype;
-    window.Myjquery = window.$ = Myjquery;
+    window.Myjquery = window._$ = Myjquery;
 })(window);
