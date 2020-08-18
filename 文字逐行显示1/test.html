@@ -32,7 +32,7 @@
 </div>
 <div class="box"></div>
 <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
-<script>
+<!--<script>
     let timer = null;
     $(function () {
         let wHeight = $(".box4").offset().top;
@@ -48,13 +48,6 @@
     let str = $text.html();
     let index = 0;
     function type(){
-        let current = str.substr(0,index);
-        if (current == '<') {
-            //indexOf() 方法返回">"在字符串中首次出现的位置。
-            index = str.indexOf('', index) + 1;
-        } else {
-            index++;
-        }
         $text.html(str.substring(0,index++));
         if(index >= str.length) {
             return;
@@ -65,7 +58,45 @@
     }
 
 
-</script>
+</script>-->
+<script>
+    let timerId = null;
+    $(function () {
+        let wHeight = $(".box4").offset().top;
+        $(window).scroll(function () {
+            let scrollt = document.documentElement.scrollTop + document.body.scrollTop;
+            if (scrollt >= wHeight-1000) {
+                type();
+            }
+        });
+    });
+  /*  let $text = $(".box4");
+    let str = $text.html();
+    let index = 0;
+    function type(){
+        $text.html(str.substring(0,index++));
+        if(index >= str.length) {
+            return;
+        } else {
+            setTimeout(type,500);
+        };
 
+    }*/
+
+    let $text = $(".box4");
+    let str = $text.html();
+    let index = 0;
+    function type(){
+        $text.html(str.substring(0,index++));
+        if(index >= str.length) {
+            return;
+        } else {
+          setTimeout(type,100);
+        };
+
+    }
+
+
+</script>
 </body>
 </html>
