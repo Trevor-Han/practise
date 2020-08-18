@@ -9,6 +9,9 @@
             height: 1000px;
             width: 100%;
         }
+        .box4{
+            opacity: 0;
+        }
     </style>
 
 </head>
@@ -63,12 +66,21 @@
     let timerId = null;
     $(function () {
         let wHeight = $(".box4").offset().top;
-        $(window).scroll(function () {
+      /*  $(window).scroll(function () {
             let scrollt = document.documentElement.scrollTop + document.body.scrollTop;
             if (scrollt >= wHeight-1000) {
                 type();
             }
-        });
+        });*/
+        window.onscroll = Throttle(function () {
+            let scrollt = document.documentElement.scrollTop + document.body.scrollTop;
+            if (scrollt >= wHeight-1200) {
+                $(".box4").animate({
+                    opacity:1
+                });
+                type();
+            }
+        },100,200);
     });
   /*  let $text = $(".box4");
     let str = $text.html();
@@ -94,6 +106,20 @@
           setTimeout(type,100);
         };
 
+    }
+    function Throttle(fn,delay ,last) {
+        let timeout = null,//进行去抖处理
+            startTime = new Date();
+        return function() {
+            let curTime = new Date();
+            clearTimeout(timeout);
+            if(curTime - startTime >= last) {
+                fn();
+                startTime = curTime;
+            }else {
+                timeout = setTimeout( fn,delay);
+            }
+        }
     }
 
 
