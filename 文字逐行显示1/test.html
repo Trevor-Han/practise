@@ -99,14 +99,15 @@
     let str = $text.html();
     let index = 0;
     function type(){
+        clearTimeout(timerId);
         $text.html(str.substring(0,index++));
         if(index >= str.length) {
             return;
         } else {
-          setTimeout(type,100);
+          timerId = setTimeout(type,5);
         };
-
     }
+
     function Throttle(fn,delay ,last) {
         let timeout = null,//进行去抖处理
             startTime = new Date();
