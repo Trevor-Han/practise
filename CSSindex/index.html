@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#root{
+			display: flex;
+			justify-content: center;
+			width: 50px;
+			padding: 10px;
+			font-size: 25px;
+			font-weight: 600;
+			border: 5px solid grey;
+			border-radius: 20px;
+		}
+        #roots{
+			display: flex;
+			justify-content: center;
+			width: 50px;
+			padding: 10px;
+			font-size: 25px;
+			font-weight: 600;
+			border: 5px solid grey;
+			border-radius: 20px;
+		}
+	</style>
+</head>
+<body>
+
+    <div id="root">0</div>
+    <div id="roots">0</div>
+    <div id="rootss">0</div>
+    <div id="rootsss">0</div>
+</body>
+<script type="text/javascript">
+    let timer = null;
+	function roll(total, idname, step) {
+		let n = 0;
+		return function () {
+			n = (n + step) >= total ? total : (n + step);
+            console.log(n);
+            if (n <= total) {
+				document.getElementById(idname).innerHTML = n;
+			}
+		}
+	}
+	function start(index, idname, step, runtime = 1000){
+		let rolling = roll(index, idname, step);
+		runtime = (runtime >= 300) ? runtime : 1000;
+        for (let i = 0; i < (index/step)+1; i++) {
+			timer = setTimeout(rolling, (runtime/index)*i*step);
+        }
+		clearTimeout(timer);
+	}
+    start(67213,'root', 4,);
+    start(500,'roots', 4,);
+    /*function start1(index, idname, step, runtime = 1000){
+		let rolling = roll(index, idname, step);
+		runtime = (runtime >= 300) ? runtime : 1000;
+		for (let i = 0; i < (index/step)+1; i++) {
+		    timer = setTimeout(rolling, (runtime/index)*i*step)
+		}
+		clearTimeout(timer);
+	}*/
+
+    start1(50,'roots', 4,)
+</script>
+</html>
