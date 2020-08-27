@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title><style type="text/css">
+    .box {
+        position: relative;
+        width: 500px;
+        min-height: 100px;
+        margin: 100px auto;
+        background: #eeeeee;
+    }
+    .item {
+        position: absolute;
+        width: 120px;
+        left: 0;
+        top: 0;
+    }
+</style>
+
+</head>
+<body>
+<div class="box" style="">
+    <div class="item" style="height: 40px;background: red;"></div>
+    <div class="item" style="height: 50px;background: blue;"></div>
+    <div class="item" style="height: 100px;background: green;"></div>
+    <div class="item" style="height: 60px;background: gray;"></div>
+    <div class="item" style="height: 50px;background: orange;"></div>
+    <div class="item" style="height: 20px;background: yellow;"></div>
+    <div class="item" style="height: 40px;background: red;"></div>
+    <div class="item" style="height: 50px;background: blue;"></div>
+    <div class="item" style="height: 100px;background: green;"></div>
+    <div class="item" style="height: 120px;background: gray;"></div>
+    <div class="item" style="height: 58px;background: orange;"></div>
+    <div class="item" style="height: 36px;background: yellow;"></div>
+</div>
+<script type="text/javascript">
+    function WaterFall(params) {
+        this.box = (params && params.parent) || '.box';
+        this.item = (params && params.child) || '.item';
+        this.column = (params && params.column) || 0;
+        this.row_margin = (params && params.row_margin) || 0;
+        this.column_margin = (params && params.column_margin) || 10;
+        this.height_arr = [];
+        this._box_width = 0;
+        this._item_width = 0;
+        this._computed = function() {
+            this._box_width = document.querySelector(this.box).offsetWidth;
+            this._item_width = document.querySelector(this.item).offsetWidth;
+            this.column = Math.floor((this._box_width - this.row_margin)/this._item_width) ;//列数
+            this.row_margin = !this.row_margin ? (this._box_width - this._item_width * this.column)/(this.column-1) : this.row_margin
+        };
+        this.init = function() {
+            this._computed();
+            let item = document.querySelectorAll(this.item);
+            this.height_arr = new Array(this.column).fill(0);
+            for(let i = 0; i < item.length; i++) {
+                let index = this.height_arr.indexOf(Math.min.apply(null, this.height_arr));
+                item[i].style.left = (this._item_width + this.row_margin) * index + 'px';
+                item[i].style.top = this.height_arr[index] + this.column_margin + 'px';
+                this.height_arr[index] += item[i].offsetHeight + this.column_margin;
+            }
+            document.querySelector('.box').style.height = Math.max.apply(null, this.height_arr) + 'px';
+        }
+    }
+   let test = new WaterFall();
+    test.init()
+</script>
+</body>
+</html>

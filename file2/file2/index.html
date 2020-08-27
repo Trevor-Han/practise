@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用jquery及css对按钮样式修改</title>
+
+    <style>
+
+        .content {
+
+            width: 100%;
+
+            height: auto;
+
+        }
+        .button { /* 按钮美化 */
+
+            width: 80px; /* 宽度 */
+
+            height: 37px; /* 高度 */
+
+            border-width: 0px; /* 边框宽度 */
+
+            border-radius: 4px; /* 边框半径 */
+
+            background: #1E90FF; /* 背景颜色 */
+
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+
+            outline: none; /* 不显示轮廓线 */
+
+            font-family: Microsoft YaHei; /* 设置字体 */
+
+            color: white; /* 字体颜色 */
+
+            font-size: 16px; /* 字体大小 */
+
+            opacity: 0.5;
+
+        }
+        .button:hover {
+            opacity: 1 !important; /* 提高hover的优先权 */
+        }
+        .change>div{
+            margin: 50px 0;
+            width: 500px;
+            height: 300px;
+            background: skyblue;
+            display: none;
+        }
+        .change>div:nth-of-type(2){
+            background: #16c196;
+        }
+        .change>div:nth-of-type(3){
+            background: #1d7db1;
+        }
+        .one{
+            background: #1E90FF; /* 背景颜色 */
+            opacity: 1;
+        }
+        .show{
+            display: block!important;
+        }
+    </style>
+
+</head>
+
+<body title="周计划">
+<script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+       $(".content .button").click(function () {
+          let index = $(this).index();
+           let changeIndex = $(".change>div").eq(index);
+           $(this).addClass("one").siblings().removeClass("one");
+           changeIndex.addClass("show").siblings().removeClass("show");
+       });
+    });
+
+</script>
+
+<div class="content">
+    <button class="button one" > 星期一</button>
+    <button class="button" > 星期二</button>
+    <button class="button" > 星期三</button>
+    <!-- <button class="button" onclick="day('3')" id="wed"> 星期三</button>
+
+    <button class="button" onclick="day('4')" id="thu"> 星期四</button>
+
+    <button class="button" onclick="day('5')" id="fri"> 星期五</button>
+
+    <button class="button" onclick="day('6')" id="sat"> 星期六</button>
+
+    <button class="button" onclick="day('7')" id="sun"> 星期日</button> -->
+
+</div>
+
+<div>
+    <div class="change">
+        <div class="show"></div>
+        <div class=""></div>
+        <div class=""></div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
