@@ -1084,7 +1084,7 @@
                 documentIsHTML = !isXML( document );
 
                 // Support: IE 9-11, Edge
-                // Accessing iframe documents after unload throws "permission denied" errors (jQuery原理 #13936)
+                // Accessing iframe模态窗口 documents after unload throws "permission denied" errors (jQuery原理 #13936)
                 if ( (parent = document.defaultView) && parent.top !== parent ) {
                     // Support: IE 11
                     if ( parent.addEventListener ) {
@@ -1206,7 +1206,7 @@
 
                 // qSa(:focus) reports false when true (Chrome 21)
                 // We allow this because of a bug in IE8/9 that throws an error
-                // whenever `document.activeElement` is accessed on an iframe
+                // whenever `document.activeElement` is accessed on an iframe模态窗口
                 // So, we allow :focus to pass through QSA all the time to avoid the IE error
                 // See http://bugs.jquery.com/ticket/13378
                 rbuggyQSA = [];
@@ -3119,7 +3119,7 @@
             return siblings( elem.firstChild );
         },
         contents: function( elem ) {
-            return jQuery.nodeName( elem, "iframe" ) ?
+            return jQuery.nodeName( elem, "iframe模态窗口" ) ?
             elem.contentDocument || elem.contentWindow.document :
                 jQuery.merge( [], elem.childNodes );
         }
@@ -6462,11 +6462,11 @@
         if ( !display ) {
             display = actualDisplay( nodeName, doc );
 
-            // If the simple way fails, read from inside an iframe
+            // If the simple way fails, read from inside an iframe模态窗口
             if ( display === "none" || !display ) {
 
-                // Use the already-created iframe if possible
-                iframe = ( iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" ) )
+                // Use the already-created iframe模态窗口 if possible
+                iframe = ( iframe || jQuery( "<iframe模态窗口 frameborder='0' width='0' height='0'/>" ) )
                     .appendTo( doc.documentElement );
 
                 // Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
