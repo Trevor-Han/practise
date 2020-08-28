@@ -1,0 +1,44 @@
+.scrollNews {
+  height: 100px;
+  overflow: hidden;
+  height: 6.25rem;
+}
+.scrollNews li {
+  list-style: none;
+}
+.item-bin {
+  width: 100% !important;
+  height: 100%;
+  z-index: 9999;
+}
+.item-bin li {
+  list-style: none;
+}
+.item-bin h2 {
+  font-size: 10px !important;
+}
+.item-bin .list-box {
+  display: flex;
+  flex-direction: column;
+}
+.item-bin .list-box .list-item-box {
+  display: flex;
+  width: 89%;
+  justify-content: space-around;
+}
+.item-bin .list-box .list-item-box .list-item-ming {
+  color: #fff;
+  font-size: 14px;
+}
+.item-bin .list-box .list-item-box .list-item-xiazai {
+  color: #fff;
+  font-size: 14px;
+}
+.item-bin .list-box .lis-box-small {
+  display: flex;
+  width: 85%;
+  justify-content: space-around;
+  margin: 0 auto;
+  align-items: center;
+  border-bottom: 1px solid #18315b;
+}

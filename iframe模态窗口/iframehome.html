@@ -3,31 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/iziModal.css">
+    <link rel="stylesheet" href="iziModal.css">
 </head>
 <body>
 
-<li><a href="iframe1.html" class="trigger-iframe">Iframe</a></li>
-<li><a href="iframe2.html" class="trigger-iframe">Iframe</a></li>
+<a href="iframe1.html" class="trigger">Iframe</a>
+<a href="iframe2.html" class="trigger">Iframe</a>
 
-<div id="modal-iframe" class="iziModal light"></div>
+<div id="modal-iframe"></div>
 
 <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
-<script src="js/iziModal.js" type="text/javascript"></script>
+<script src="iziModal.js" type="text/javascript"></script>
 <script>
     $("#modal-iframe").iziModal({
-        iconClass: 'icon-settings_system_daydream',
-        transitionIn: 'transitionIn',
-        transitionOut: 'transitionOut',
-        headerColor: '#fff',
-        theme: 'light',
-        width: 1920,
+        title: '',
+        subtitle: '',
+        headerColor: '#88A0B9',
+        background: null,
+        theme: '',  // light
+        icon: null,
+        iconText: null,
+        iconColor: '',
+        rtl: false,
+        width: 600,
+        top: null,
+        bottom: null,
+        borderBottom: true,
+        padding: 0,
+        radius: 3,
+        zindex: 999,
+        iframe: false,
+        iframeHeight: 400,
+        iframeURL: null,
+        focusInput: true,
+        group: '',
+        loop: false,
+        arrowKeys: true,
+        navigateCaption: true,
+        navigateArrows: true, // Boolean, 'closeToModal', 'closeScreenEdge'
+        history: false,
+        restoreDefaultContent: false,
+        autoOpen: 0, // Boolean, Number
+        bodyOverflow: false,
+        fullscreen: false,
+        openFullscreen: false,
+        closeOnEscape: true,
+        closeButton: true,
+        appendTo: 'body', // or false
+        appendToOverlay: 'body', // or false
+        overlay: true,
         overlayClose: true,
-        iframe : true,
+        overlayColor: 'rgba(0, 0, 0, 0.4)',
+        timeout: false,
+        timeoutProgressbar: false,
+        pauseOnHover: false,
+        timeoutProgressbarColor: 'rgba(255,255,255,0.5)',
+        transitionIn: 'comingIn',
+        transitionOut: 'comingOut',
+        transitionInOverlay: 'fadeIn',
+        transitionOutOverlay: 'fadeOut',
+        onFullscreen: function(){},
+        onResize: function(){},
+        onOpening: function(){},
+        onOpened: function(){},
+        onClosing: function(){},
+        onClosed: function(){},
+        afterRender: function(){}
     });
 
 
-    $(document).on('click', '.trigger-iframe', function (event) {
+    $(document).on('click', '.trigger', function (event) {
         event.preventDefault();
         //$('#modal-iframe').trigger('izi.open', this);
         $("#modal-iframe").iziModal('open', event);
