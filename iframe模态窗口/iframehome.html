@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="iziModal.css">
+    <link rel="stylesheet" href="css/iziModal.css">
 </head>
 <body>
 
@@ -13,40 +13,19 @@
 <div id="modal-iframe"></div>
 
 <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
-<script src="iziModal.js" type="text/javascript"></script>
+<script src="js/iziModal.js" type="text/javascript"></script>
 <script>
     $("#modal-iframe").iziModal({
-        title: '',
-        subtitle: '',
+        title: 'han',
+        subtitle: 'bb',
         headerColor: '#88A0B9',
         background: null,
         theme: '',  // light
-        icon: null,
-        iconText: null,
-        iconColor: '',
-        rtl: false,
-        width: 600,
-        top: null,
-        bottom: null,
+        width: 1920,
         borderBottom: true,
-        padding: 0,
-        radius: 3,
         zindex: 999,
-        iframe: false,
-        iframeHeight: 400,
-        iframeURL: null,
-        focusInput: true,
-        group: '',
-        loop: false,
-        arrowKeys: true,
-        navigateCaption: true,
-        navigateArrows: true, // Boolean, 'closeToModal', 'closeScreenEdge'
-        history: false,
-        restoreDefaultContent: false,
-        autoOpen: 0, // Boolean, Number
-        bodyOverflow: false,
-        fullscreen: false,
-        openFullscreen: false,
+        iframe: true,
+        iframeHeight: 1080,
         closeOnEscape: true,
         closeButton: true,
         appendTo: 'body', // or false
@@ -54,21 +33,11 @@
         overlay: true,
         overlayClose: true,
         overlayColor: 'rgba(0, 0, 0, 0.4)',
-        timeout: false,
-        timeoutProgressbar: false,
-        pauseOnHover: false,
         timeoutProgressbarColor: 'rgba(255,255,255,0.5)',
         transitionIn: 'comingIn',
         transitionOut: 'comingOut',
         transitionInOverlay: 'fadeIn',
         transitionOutOverlay: 'fadeOut',
-        onFullscreen: function(){},
-        onResize: function(){},
-        onOpening: function(){},
-        onOpened: function(){},
-        onClosing: function(){},
-        onClosed: function(){},
-        afterRender: function(){}
     });
 
 
