@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        *{
+            margin: 0px;
+            padding: 0;
+        }
         .box{
             width: 1200px;
             margin: 0 auto;
             height: 400px;
-            background: #000;
+            background: #209CAA;
         }
         .box2{
             width: 1200px;
@@ -28,16 +32,55 @@
             height: 400px;
             background: #39ff7a;
         }
+        ul{
+            width: 500px;
+        }
+        li{
+            height: 50px;
+        }
+        .head{
+            width: 100%;
+            height: 80px;
+            background: #000;
+            position: relative;
+            top: 0;
+        }
+        div{
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .head-in{
+            width: 100%;
+            height: 40px;
+            background: #f5f5f5;
+        }
+        body,html{
+            height: 100%;
+            width: 100%;
+            min-width: 1000px;
+        }
+        html{
+            overflow-x: hidden;
+        }
     </style>
     <link rel="stylesheet" href="css/iziModal.css">
 </head>
 <body>
-<div class="box"></div>
-<div class="box2"></div>
-<div class="box3"></div>
-<div class="box4"></div>
+<div class="head-in"></div>
+<div class="head">head</div>
+<div class="box">1</div>
+<div class="box2">2</div>
+<div class="box3">3</div>
+<div class="box4">4</div>
 <a href="iframe1.html" class="trigger">Iframe</a>
 <a href="iframe2.html" class="trigger">Iframe</a>
+<div class="box">5</div>
+<div class="box2">6</div>
+<div class="box3">7</div>
+<div class="box4">8</div>
 
 <div id="modal-iframe"></div>
 
@@ -73,13 +116,59 @@
         $("#modal-iframe").iziModal('open', event);
         $("body").css({
             overflowY:"hidden"
-        })
+        });
     });
     $(document).on('click', '.iziModal-button-close', function (event) {
         $("body").css({
             overflowY:"auto"
-        })
+        });
     });
+    function getPopup(){
+        top = window.pageYOffset;
+        $nav.css({
+            position:"fixed",
+            width:"100%",
+            top:-top,
+            overflow: "hidden"
+        });
+        return top;
+    }
+    function getPopDown(){
+        $nav.attr('style',"");
+        $nav.css("position","relative");
+        window.scrollTo(0, top);
+        console.log(window.scrollTo);
+        top = 0;
+        return false;
+    }
+</script>
+<script>
+    headerScroll()
+    //导航栏的吸顶效果
+    function headerScroll() {
+        let headHeight = $(".head-in").height();
+        let oMainNav = $(".head");
+        let navBig = $(".mainNav .big");
+        let navSmall = $(".mainNav .small");
+        $(window).scroll(function () {
+            let offsetY = $("body").scrollTop() + $("html").scrollTop();
+            if (offsetY >= headHeight) {
+                oMainNav.css({
+                    position: "fixed",
+                    top: 0,
+                    zIndex: "9999"
+                });
+
+            } else {
+                oMainNav.css({
+                    position: "relative",
+                    top: "auto"
+                });
+
+
+            }
+        });
+    }
 </script>
 </body>
 </html>
