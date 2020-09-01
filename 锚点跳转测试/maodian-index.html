@@ -7,46 +7,55 @@
 <body>
 <a href="maodian-index.html#us_1">测试</a>
 
-<div id="showTime"></div>
+<div class="time">
+    <div class="year">00</div>
+    <div class="mouth">00</div>
+    <div class="second">00</div>
+</div>
 <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
 <script>
+    let oYear = $(".time>.year");
+    let oMouth = $(".time .mouth");
+    let oDay = $(".time .second");
+    setTime();
+    setInterval(function () {
+        setTime();
+    }, 1000);
     function setTime() {
-        let obj = getTime();
-        // console.log(obj);
-        oHour.innerText = obj.hour;
-        oMinute.innerText = obj.minute;
-        oSecond.innerText = obj.second;
+        let obj = getNowDate();
+        oYear.html(obj.year);
+        oMouth.html(obj.month+"/"+obj.day);
+        oDay.html(obj.hour+":"+obj.minutes+obj.week);
     }
-function getTime() {
-    let myDate = new Date();
-    let year =  myDate.getFullYear();//年
-    let mouth = myDate.getMonth()+1;
-    let hours = myDate.getHours();//获取时
-    let minute = myDate.getMinutes();//获取分
-    let second =  myDate.getSeconds();
-    return{
-        year:year,
-        mouth:mouth,
-        hours:hours,
-        minute:minute,
-        second:second
-    }
-}
-    //获取当前时间
-    function nowdata() {
-        let myDate = new Date();
-        myDate.getYear();        //获取当前年份(2位)
-        myDate.getFullYear();    //获取完整的年份(4位,1970-????)
-        myDate.getMonth();       //获取当前月份(0-11,0代表1月)
-        myDate.getDate();        //获取当前日(1-31)
-        myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
-        myDate.getTime();        //获取当前时间(从1970.1.1開始的毫秒数)
-        myDate.getHours();       //获取当前小时数(0-23)
-        myDate.getMinutes();     //获取当前分钟数(0-59)
-        myDate.getSeconds();     //获取当前秒数(0-59)
-        myDate.getMilliseconds();    //获取当前毫秒数(0-999)
-        myDate.toLocaleDateString();     //获取当前日期
-        let mytime = myDate.toLocaleTimeString();     //获取当前时间
+    function getNowDate() {
+        let date = new Date();
+        let year = date.getFullYear() // 年
+        let month = date.getMonth() + 1; // 月
+        let day  = date.getDate(); // 日
+        let hour = date.getHours(); // 时
+        let minutes = date.getMinutes(); // 分
+        let weekArr = ['星期日','星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ];
+        let week = weekArr[date.getDay()];
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (day >= 0 && day <= 9) {
+            day = "0" + day;
+        }
+        if (hour >= 0 && hour <= 9) {
+            hour = "0" + hour;
+        }
+        if (minutes >= 0 && minutes <= 9) {
+            minutes = "0" + minutes;
+        }
+        return {
+            year:year,
+            month:month,
+            day:day,
+            hour:hour,
+            minutes:minutes,
+            week:week
+        }
     }
 </script>
 </body>
