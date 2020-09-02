@@ -8,7 +8,7 @@
     }
     .pot-in > h1{
         line-height: 0.7rem!important;
-        font-size: 0.5rem!important;
+        font-size: 0.16rem!important;
         margin-top: 5%;
     }
     .info-img{
@@ -21,15 +21,20 @@
     }
     .pot-left{
         width: 90% !important;
-        margin: 0.7rem auto 0!important;
+        margin: 0.6rem auto!important;
         display: flex;
         justify-content: space-between;
         flex-direction: row;
         flex-wrap: nowrap;
+        height: 33% !important;
+    }
+    .pot-left:nth-of-type(2){
+        bottom: 10% !important;
     }
     .pot-left-top{
         width: 50%!important;
         position: static!important;
+        height: 82% !important;
     }
     .pot-right{
         width: 90% !important;
@@ -44,21 +49,26 @@
          transform: translate(0%, 0%) !important;
 }
 .pot-left-bottom{
-    width: 50% !important;
+    width: 43% !important;
     position: static!important;
 }
     .pot-left-bottom h1{
-        font-size: 0.5rem!important;
+        font-size: 0.2rem!important;
         margin-bottom: 0.1rem!important;
     }
     .pot-left-bottom h6{
-        font-size: 0.3rem!important;
-        margin-bottom: 0.1rem!important;
+        font-size: 0.14rem!important;
     }
     .pot-left-bottom p {
-        font-size: 0.2rem!important;
+        font-size: 0.12rem!important;
         margin-bottom: 0.1rem!important;
         width: 90% !important;
         text-align: center;
+    }
+.box-h1:after{
+    content: none!important;
+}
+    .box-h1:before{
+        content: none!important;
     }
 }
