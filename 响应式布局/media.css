@@ -1,0 +1,64 @@
+@media screen and (max-width: 576px){
+    html{
+        font-size: 100px;
+    }
+    .footer-in{
+        width: 95% !important;
+        height: 95% !important;
+    }
+    .pot-in > h1{
+        line-height: 0.7rem!important;
+        font-size: 0.5rem!important;
+        margin-top: 5%;
+    }
+    .info-img{
+        margin: 10%;
+    }
+    .pop{
+        height: 100% !important;
+        width: 100% !important;
+        flex-direction:column;
+    }
+    .pot-left{
+        width: 90% !important;
+        margin: 0.7rem auto 0!important;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .pot-left-top{
+        width: 50%!important;
+        position: static!important;
+    }
+    .pot-right{
+        width: 90% !important;
+        margin: 0 auto;
+    }
+    .pot-left-img{
+        border: none!important;
+        width: 100% !important;
+        padding: 0!important;
+        left: 60% !important;
+        position: static!important;
+         transform: translate(0%, 0%) !important;
+}
+.pot-left-bottom{
+    width: 50% !important;
+    position: static!important;
+}
+    .pot-left-bottom h1{
+        font-size: 0.5rem!important;
+        margin-bottom: 0.1rem!important;
+    }
+    .pot-left-bottom h6{
+        font-size: 0.3rem!important;
+        margin-bottom: 0.1rem!important;
+    }
+    .pot-left-bottom p {
+        font-size: 0.2rem!important;
+        margin-bottom: 0.1rem!important;
+        width: 90% !important;
+        text-align: center;
+    }
+}

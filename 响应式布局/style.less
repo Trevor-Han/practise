@@ -1,3 +1,6 @@
+html{
+  font-size: 100px;
+}
 .mask{
   position: fixed;
   width: 100%;
@@ -10,9 +13,9 @@
     width: 100%;
     height: 100%;
     .footer-in{
-      width: 638px;
-      height: 415px;
-      background: #3C16E1;
+      width: 800px;
+      height: 550px;
+      background: url("oppop.jpg") no-repeat center center / cover;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -21,51 +24,181 @@
         width: 100%;
         height: 100%;
         position: relative;
-        h1{
-          width: 100%;
-          color: #fff;
-          font-size: 24px;
-          text-align: center;
-          margin-top: 3%;
-        }
         .pot-in{
-          width: 530px;
-          height: 330px;
+          width:95%;
+          height:95%;
           position: absolute;
           top: 50%;
           left: 50%;
            transform: translate(-50%,-50%);
-          display: flex;
-          justify-content: space-between;
-
-          .pot-left{
-            width: 238px;
-            height: 330px;
-            background: #fff;
-            .pot-left-top{
-              width: 100%;
-              height: 50%;
-              background: #F10A62;
-            }
-            .pot-left-bottom{
-              width: 100%;
-              height: 50%;
-              background: #D53974;
-            }
+          border: 3px solid rgba(255,255,255,0.6);
+          &>h1{
+            width: 100%;
+            line-height: 60px;
+            font-size: 26px;
+            text-align: center;
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 10px;
           }
-          .pot-right{
-            width: 238px;
-            height: 330px;
-            background: #fff;
-            .pot-right-top{
-              width: 100%;
-              height: 50%;
-              background: #0AD1F1;
+          .pop{
+            width: 660px;
+            height: 415px;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            .pot-left{
+              width:45%;
+              height: 100%;
+              background: #fff;
+              position: relative;
+              .pot-left-top{
+                width: 100%;
+                height: 50%;
+                position: absolute;
+                .pot-left-img{
+                  width: 70%;
+                  height: 100%;
+                  position: absolute;
+                  top: 60%;
+                  left: 50%;
+                  transform: translate(-50%,-50%);
+                  border: 2px solid #F10A62;
+                  padding: 6%;
+                  .info-img{
+                    width: 100%;
+                    height: 100%;
+                    background: #F10A62;
+                    padding: 10%;
+                  }
+                  img{
+                    width: 100%;
+                  }
+                }
+              }
+              .pot-left-bottom{
+                width: 100%;
+                height: 45%;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                h1{
+                  width: 100%;
+                  font-size: 23px;
+                  color: #303233;
+                  margin-bottom: 10px;
+                }
+                h6{
+                  width: 100%;
+                  font-size: 15px;
+                  line-height: 32px;
+                  margin-top: 16px;
+                }
+                p{
+                  font-size: 12px;
+                  line-height: 16px;
+                }
+                .box-h1{
+                  color: #F10A62;
+                  margin-top: 16px;
+                  &:before{
+                    display: inline-block;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    border: 1px solid #f76da1;
+                    transform: rotate(45deg);
+                    margin-right: 10px;
+                  }
+                  &:after{
+                    display: inline-block;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    border: 1px solid #f76da1;
+                    transform: rotate(45deg);
+                    margin-left: 10px;
+                  }
+                }
+              }
             }
-            .pot-right-bottom{
-              width: 100%;
-              height: 50%;
-              background: #11C423;
+            .pot-right{
+              width:45%;
+              height: 100%;
+              background: #fff;
+              position: relative;
+              .pot-right-top{
+                width: 100%;
+                height: 50%;
+                position: absolute;
+                .pot-right-img{
+                  width: 70%;
+                  height: 100%;
+                  position: absolute;
+                  top: 60%;
+                  left: 50%;
+                  transform: translate(-50%,-50%);
+                  border: 2px solid #F10A62;
+                  padding: 6%;
+                  .info-img{
+                    width: 100%;
+                    height: 100%;
+                    background: #F10A62;
+                    padding: 10%;
+                  }
+                  img{
+                    width: 100%;
+                  }
+                }
+              }
+              .pot-right-bottom{
+                width: 100%;
+                height: 45%;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                h1{
+                  width: 100%;
+                  font-size: 23px;
+                  color: #303233;
+                  margin-bottom: 10px;
+                }
+                h6{
+                  width: 100%;
+                  font-size: 15px;
+                  line-height: 32px;
+                  margin-top: 16px;
+                }
+                p{
+                  font-size: 12px;
+                  line-height: 16px;
+                }
+                .box-h1{
+                  color: #F10A62;
+                  margin-top: 16px;
+                  &:before{
+                    display: inline-block;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    border: 1px solid #f76da1;
+                    transform: rotate(45deg);
+                    margin-right: 10px;
+                  }
+                  &:after{
+                    display: inline-block;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    border: 1px solid #f76da1;
+                    transform: rotate(45deg);
+                    margin-left: 10px;
+                  }
+                }
+              }
             }
           }
         }
