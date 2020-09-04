@@ -19,7 +19,6 @@ function waterfall(oItems,cols) {
         let item = oItems[i];
         //判断是否第一行
         if (i < cols){
-
             rowHeight.push(item.offsetLeft);
         }
     }

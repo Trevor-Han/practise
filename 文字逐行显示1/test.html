@@ -5,6 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
+        /*ie浏览器*/
+        html{
+            -ms-scroll-chaining: chained;
+            -ms-overflow-style: none;
+            -ms-content-zooming: zoom;
+            -ms-scroll-rails: none;
+            -ms-content-zoom-limit-min: 100%;
+            -ms-content-zoom-limit-max: 500%;
+            -ms-scroll-snap-type: proximity;
+            -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+            -ms-overflow-style: none;
+            overflow: auto;
+        }
+        /*谷歌浏览器*/
+        html::-webkit-scrollbar {display:none}
         .box{
             height: 1000px;
             width: 100%;
