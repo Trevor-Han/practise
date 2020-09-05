@@ -48,7 +48,23 @@
             background: red;
             position: absolute;
             left: 0;
-
+        }
+        .span-title{
+            width: 500px;
+            height: 50px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .span-title span{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            display: none;
+        }
+        .show{
+            display: block!important;
         }
     </style>
 </head>
@@ -65,7 +81,15 @@
         <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
     </div>
 </div>
+<div class="span-title">
+    <span class="show">slider1</span>
+    <span>slider2</span>
+    <span>slider3</span>
+    <span>slider4 </span>
+
+</div>
 <div class="title">
+
     <div class="side"></div>
 </div>
 
