@@ -1803,7 +1803,7 @@
       if (swiper.virtual && swiper.params.virtual.enabled) {
         swiper.clickedIndex = parseInt($(slide).attr('data-swiper-slide-index'), 10);
       } else {
-        swiper.clickedIndex = $(slide).index1();
+        swiper.clickedIndex = $(slide).index();
       }
     } else {
       swiper.clickedSlide = undefined;
@@ -2215,7 +2215,7 @@
           slideToIndex = $wrapperEl
             .children(("." + (params.slideClass) + "[data-swiper-slide-index=\"" + realIndex + "\"]:not(." + (params.slideDuplicateClass) + ")"))
             .eq(0)
-            .index1();
+            .index();
 
           Utils.nextTick(function () {
             swiper.slideTo(slideToIndex);
@@ -2228,7 +2228,7 @@
         slideToIndex = $wrapperEl
           .children(("." + (params.slideClass) + "[data-swiper-slide-index=\"" + realIndex + "\"]:not(." + (params.slideDuplicateClass) + ")"))
           .eq(0)
-          .index1();
+          .index();
 
         Utils.nextTick(function () {
           swiper.slideTo(slideToIndex);
@@ -5148,7 +5148,7 @@
         if ($el.length > 1) {
           bullets.each(function (index, bullet) {
             var $bullet = $(bullet);
-            var bulletIndex = $bullet.index1();
+            var bulletIndex = $bullet.index();
             if (bulletIndex === current) {
               $bullet.addClass(params.bulletActiveClass);
             }
@@ -5309,7 +5309,7 @@
       if (params.clickable) {
         $el.on('click', ("." + (params.bulletClass)), function onClick(e) {
           e.preventDefault();
-          var index = $(this).index1() * swiper.params.slidesPerGroup;
+          var index = $(this).index() * swiper.params.slidesPerGroup;
           if (swiper.params.loop) { index += swiper.loopedSlides; }
           swiper.slideTo(index);
         });
@@ -6480,10 +6480,10 @@
             var slideOriginalIndex = $slideEl.attr('data-swiper-slide-index');
             if ($slideEl.hasClass(swiper.params.slideDuplicateClass)) {
               var originalSlide = swiper.$wrapperEl.children(("[data-swiper-slide-index=\"" + slideOriginalIndex + "\"]:not(." + (swiper.params.slideDuplicateClass) + ")"));
-              swiper.lazy.loadInSlide(originalSlide.index1(), false);
+              swiper.lazy.loadInSlide(originalSlide.index(), false);
             } else {
               var duplicatedSlide = swiper.$wrapperEl.children(("." + (swiper.params.slideDuplicateClass) + "[data-swiper-slide-index=\"" + slideOriginalIndex + "\"]"));
-              swiper.lazy.loadInSlide(duplicatedSlide.index1(), false);
+              swiper.lazy.loadInSlide(duplicatedSlide.index(), false);
             }
           }
           swiper.emit('lazyImageReady', $slideEl[0], $imageEl[0]);
@@ -6518,13 +6518,13 @@
         if (isVirtual) {
           return $(slideEl).attr('data-swiper-slide-index');
         }
-        return $(slideEl).index1();
+        return $(slideEl).index();
       }
 
       if (!swiper.lazy.initialImageLoaded) { swiper.lazy.initialImageLoaded = true; }
       if (swiper.params.watchSlidesVisibility) {
         $wrapperEl.children(("." + (swiperParams.slideVisibleClass))).each(function (elIndex, slideEl) {
-          var index = isVirtual ? $(slideEl).attr('data-swiper-slide-index') : $(slideEl).index1();
+          var index = isVirtual ? $(slideEl).attr('data-swiper-slide-index') : $(slideEl).index();
           swiper.lazy.loadInSlide(index);
         });
       } else if (slidesPerView > 1) {
@@ -6905,7 +6905,7 @@
           var $bulletEl = $(bulletEl);
           swiper.a11y.makeElFocusable($bulletEl);
           swiper.a11y.addElRole($bulletEl, 'button');
-          swiper.a11y.addElLabel($bulletEl, params.paginationBulletMessage.replace(/{{index}}/, $bulletEl.index1() + 1));
+          swiper.a11y.addElLabel($bulletEl, params.paginationBulletMessage.replace(/{{index}}/, $bulletEl.index() + 1));
         });
       }
     },
@@ -7090,7 +7090,7 @@
           var slide = swiper.slides.eq(i);
           var slideHistory = History.slugify(slide.attr('data-history'));
           if (slideHistory === value && !slide.hasClass(swiper.params.slideDuplicateClass)) {
-            var index = slide.index1();
+            var index = slide.index();
             swiper.slideTo(index, speed, runCallbacks);
           }
         }
@@ -7149,7 +7149,7 @@
       var newHash = doc.location.hash.replace('#', '');
       var activeSlideHash = swiper.slides.eq(swiper.activeIndex).attr('data-hash');
       if (newHash !== activeSlideHash) {
-        var newIndex = swiper.$wrapperEl.children(("." + (swiper.params.slideClass) + "[data-hash=\"" + newHash + "\"]")).index1();
+        var newIndex = swiper.$wrapperEl.children(("." + (swiper.params.slideClass) + "[data-hash=\"" + newHash + "\"]")).index();
         if (typeof newIndex === 'undefined') { return; }
         swiper.slideTo(newIndex);
       }
@@ -7176,7 +7176,7 @@
           var slide = swiper.slides.eq(i);
           var slideHash = slide.attr('data-hash') || slide.attr('data-history');
           if (slideHash === hash && !slide.hasClass(swiper.params.slideDuplicateClass)) {
-            var index = slide.index1();
+            var index = slide.index();
             swiper.slideTo(index, speed, swiper.params.runCallbacksOnInit, true);
           }
         }
@@ -7944,8 +7944,8 @@
           swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
           currentIndex = swiper.activeIndex;
         }
-        var prevIndex = swiper.slides.eq(currentIndex).prevAll(("[data-swiper-slide-index=\"" + slideToIndex + "\"]")).eq(0).index1();
-        var nextIndex = swiper.slides.eq(currentIndex).nextAll(("[data-swiper-slide-index=\"" + slideToIndex + "\"]")).eq(0).index1();
+        var prevIndex = swiper.slides.eq(currentIndex).prevAll(("[data-swiper-slide-index=\"" + slideToIndex + "\"]")).eq(0).index();
+        var nextIndex = swiper.slides.eq(currentIndex).nextAll(("[data-swiper-slide-index=\"" + slideToIndex + "\"]")).eq(0).index();
         if (typeof prevIndex === 'undefined') { slideToIndex = nextIndex; }
         else if (typeof nextIndex === 'undefined') { slideToIndex = prevIndex; }
         else if (nextIndex - currentIndex < currentIndex - prevIndex) { slideToIndex = nextIndex; }
@@ -7973,8 +7973,8 @@
             currentThumbsIndex = thumbsSwiper.activeIndex;
           }
           // Find actual thumbs index to slide to
-          var prevThumbsIndex = thumbsSwiper.slides.eq(currentThumbsIndex).prevAll(("[data-swiper-slide-index=\"" + (swiper.realIndex) + "\"]")).eq(0).index1();
-          var nextThumbsIndex = thumbsSwiper.slides.eq(currentThumbsIndex).nextAll(("[data-swiper-slide-index=\"" + (swiper.realIndex) + "\"]")).eq(0).index1();
+          var prevThumbsIndex = thumbsSwiper.slides.eq(currentThumbsIndex).prevAll(("[data-swiper-slide-index=\"" + (swiper.realIndex) + "\"]")).eq(0).index();
+          var nextThumbsIndex = thumbsSwiper.slides.eq(currentThumbsIndex).nextAll(("[data-swiper-slide-index=\"" + (swiper.realIndex) + "\"]")).eq(0).index();
           if (typeof prevThumbsIndex === 'undefined') { newThumbsIndex = nextThumbsIndex; }
           else if (typeof nextThumbsIndex === 'undefined') { newThumbsIndex = prevThumbsIndex; }
           else if (nextThumbsIndex - currentThumbsIndex === currentThumbsIndex - prevThumbsIndex) { newThumbsIndex = currentThumbsIndex; }
