@@ -107,6 +107,8 @@
             },
             on:{
                 slideChange:function () {
+                    let spanTitle = $(".span-title>span").eq(this.realIndex);
+                    spanTitle.addClass("show").siblings().removeClass("show");
                     $(".side").animate({
                         left: width * this.realIndex
                     })
