@@ -2760,7 +2760,7 @@ this.createjs = this.createjs || {};
 	};
 
 	/**
-	 * Determine if a specific type is a text-based asset, and should be loaded as UTF-8.
+	 * Determine if a specific type is a text-based assets, and should be loaded as UTF-8.
 	 * @method isText
 	 * @param {String} type The item type.
 	 * @return {Boolean} If the specified type is text.
