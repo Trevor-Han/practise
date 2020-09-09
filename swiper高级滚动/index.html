@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>    <link rel="stylesheet" href="../css/swiper.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 500px;
+            height: 50px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+        .swiper-container{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            color: #000;
+            font-size: 20px;
+        }
+        .swiper-wrapper{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide ul{
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+        }
+        .swiper-slide ul span{
+            position: absolute;
+            height: 3px;
+            background: #000;
+            left: 0;
+            top: 85%;
+        }
+        .swiper-slide ul li{
+            white-space: nowrap;
+            padding: 0 25px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <span></span>
+            <div class="swiper-slide blue">
+                <ul>
+                    <li class="active">综合</li>
+                    <li>单曲</li>
+                    <li>视频</li>
+                    <li>歌手</li>
+                    <li>专辑</li>
+                    <li>歌单</li>
+                    <li>主播电台</li>
+                    <li>用户</li>
+                    <span></span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
+<script src="../js/swiper.js"></script>
+<script>
+    $(function () {
+
+        let navScroll = new Swiper('.box .swiper-container', {
+            freeMode:true,
+        });
+    })
+
+</script>
+</body>
+</html>
