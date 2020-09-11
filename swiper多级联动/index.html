@@ -24,13 +24,13 @@
             font-size: 50px;
         }
         .blue{
-            background: blue;
+            background: #5d5aff;
         }
         .yellow{
-            background: yellow;
+            background: #f4eb77;
         }
         .red{
-            background: red;
+            background: #ff4e4e;
         }
         .green{
             background: green;
@@ -38,14 +38,14 @@
         .title{
             width: 500px;
             height:20px;
-            background: #000;
+            background: #303233;
             margin: 50px auto;
             position: relative;
         }
         .side{
             width: 25%;
             height: 100%;
-            background: red;
+            background: #ff4e4e;
             position: absolute;
             left: 0;
         }
@@ -65,6 +65,19 @@
         }
         .show{
             display: block!important;
+        }
+        .tips{
+            width: 500px;
+            height: 20px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            list-style: none;
+        }
+        .tips li{
+            width: 23.33%;
+            background: #00bebe;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -89,9 +102,14 @@
 
 </div>
 <div class="title">
-
     <div class="side"></div>
 </div>
+<ul class="tips">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 
 <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
 <script src="../js/swiper.js"></script>
@@ -111,9 +129,13 @@
                     spanTitle.addClass("show").siblings().removeClass("show");
                     $(".side").animate({
                         left: width * this.realIndex
-                    })
+                    });
                 },
             }
+        });
+        $(".tips li").click(function () {
+           let index = $(this).index();
+           mySwiper.slideToLoop(index);
         });
     })
 
