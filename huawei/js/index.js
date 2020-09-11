@@ -4,6 +4,7 @@ $(function () {
         autoplay: {
             delay: 3000,
         },
+        // loop:true,
         // 如果需要分页器
         pagination: {
             el: '.swiper-pagination',
