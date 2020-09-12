@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>我是json首页</h1>
+
+<script src="../js/jquery.js"></script>
+<script>
+
+    $.ajax({
+        url: 'localhost:3000/banner/' + n, //n为任意参数，服务端通过req.params.id获取
+        type: 'put'
+    }).then((res) => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    });
+</script>
+</body>
+</html>

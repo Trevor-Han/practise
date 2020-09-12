@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频播放器</title>
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/animation2.js"></script>
+    <script src="js/tools.js"></script>
+    <!--<script src="js/index.js"></script>-->
+</head>
+<body>
+<figure>
+    <figcaption>视频播放器</figcaption>
+    <video src="http://vod-icbu.alicdn.com/7c569251818fbca4/2iuMyohqEDh4RZzA8zX/TBWSgHun8JcLKf33Dp1_277741200496_hd_hq.mp4" loop muted></video>
+    <div class="control">
+        <div class="progress">
+            <div class="line"></div>
+        </div>
+        <div class="time">
+            <span class="current-time">00:00:00</span>
+            <!--<span class="total-time">00:00:00</span>-->
+        </div>
+    </div>
+</figure>
+
+<script>
+    let oVideo = document.querySelector("video");
+    let oFigure = document.querySelector("figure");
+    let oTotalTime = document.querySelector(".total-time");
+    let oPlay = document.querySelector("#play");
+    let oCurrentTime = document.querySelector(".current-time");
+    let oLine = document.querySelector(".line");
+    let oProgress = document.querySelector(".progress");
+    let oFullBtn = document.querySelector("#full");
+    let time = document.querySelector(".time");
+
+    oFigure.onmouseenter = function () {
+        oFigure.style.backgroundImage = "none";
+        oProgress.style.display = "block";
+        oVideo.style.display = "block";
+        time.style.display = "block";
+        oVideo.play();
+        let obj = formatDate(oVideo.duration);
+        oTotalTime.innerHTML = `${obj.hour}:${obj.minute}:${obj.second}`;
+    };
+    oFigure.onmouseleave = function () {
+        oFigure.style.backgroundImage = "block";
+        oVideo.style.display = "none";
+        oProgress.style.display = "none";
+        time.style.display = "none";
+        oVideo.pause();
+        let obj = formatDate(oVideo.duration);
+        oTotalTime.innerHTML = `${obj.hour}:${obj.minute}:${obj.second}`;
+    };
+    oVideo.ontimeupdate = function () {
+        let obj = parseInt(this.duration);
+        let obj1 = parseInt(this.currentTime);
+        let obj2 = obj - obj1;
+        oCurrentTime.innerHTML = s_to_hs(obj2);
+        let res = oVideo.currentTime / oVideo.duration * 100;
+        oLine.style.width = res + "%";
+    };
+    oVideo.onended = function () {
+        oVideo.currentTime = 0;
+        oCurrentTime.innerHTML = "00:00:00";
+        oLine.style.width = "0%";
+    };
+
+
+    function toFullVideo(videoDom){
+        if(videoDom.requestFullscreen){
+            return videoDom.requestFullscreen();
+        }else if(videoDom.webkitRequestFullScreen){
+            return videoDom.webkitRequestFullScreen();
+        }else if(videoDom.mozRequestFullScreen){
+            return videoDom.mozRequestFullScreen();
+        }else{
+            return videoDom.msRequestFullscreen();
+        }
+    }
+    /**
+     * 将秒转换为 分:秒
+     * s int 秒数
+     */
+    function s_to_hs(s){
+       let h;
+        h = Math.floor(s/60);
+        s = s %60;
+        h += '';
+        s += '';
+        h = (h.length==1)?'0'+h:h;
+        s = (s.length==1)?'0'+s:s;
+        return h+':'+s;
+    }
+    function formatDate(time) {
+        // 4.利用相差的总秒数 / 小时 % 24;
+        let hour = Math.floor(time / (60 * 60) % 24);
+        hour = hour >= 10 ? hour : "0" + hour;
+        // 5.利用相差的总秒数 / 分钟 % 60;
+        let minute = Math.floor(time / 60 % 60);
+        minute = minute >= 10 ? minute : "0" + minute;
+        // 6.利用相差的总秒数 % 秒数
+        let second = Math.floor(time % 60);
+        second = second >= 10 ? second : "0" + second;
+        return {
+            hour: hour,
+            minute: minute,
+            second: second,
+        }
+    }
+</script>
+</body>
+</html>

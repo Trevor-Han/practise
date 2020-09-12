@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<input type="text">
+<ul></ul>
+<script>
+    window.onload = function () {
+        let input = document.querySelector("input");
+        input.onblur = function () {
+            if (this.value.length === 0){
+                return;
+            }
+            let historyArray = localStorage.getItem("history");
+            if (!historyArray){
+                historyArray = [];
+            } else {
+                historyArray = JSON.parse(historyArray);
+            }
+            historyArray.unshift(this.value);
+            this.value = "";
+            localStorage.setItem("history",JSON.stringify(historyArray));
+        }
+    };
+
+    let a = {1:{name:"hi"}, 2:{name:"nihao"},n:2};
+    for(let key in a){
+       if(key == 2){
+           console.log(a[key].name);
+       }
+    }
+    console.log(a[2].name);
+    let p = "han";
+    let oLi = $("<li>"+p+"</li>");
+    let t = $("ul").append(oLi);
+</script>
+</body>
+</html>

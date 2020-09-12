@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 5000px;
+            background: red;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+    let scrollTop = 0;
+    let time = timer();
+    let timeLocat = data();
+    let timeOut = null;
+    window._stayStatus = {
+        // 记录运动轨迹, down > 1 向下移动 down<0 向上移动,
+        // sliderDis 移动距离,
+        // time 移动耗时,
+        // initDis 初始距离,
+        // initTime 初始时间
+        moveData: [],
+    };
+    //moveData：保存数据的数组
+    //currentMoveIndex:用于判断当前滚动状态
+    let moveData = window._stayStatus.moveData;
+    let currentMoveIndex = 0;
+
+    function move() {
+        //currentTime:停留开始时间
+        //currentTimeLocat:当前时间戳，以秒计算
+        //currentScrollTop:滚动条到浏览器顶部距离
+        //dis:保存滚动条距离差
+        //disTime:保存停留时间
+        let currentTime = timer();
+        let currentTimeLocat = data();
+        let currentScrollTop = $("body").scrollTop() + $("html").scrollTop();
+        let dis = currentScrollTop - scrollTop;
+        let disTime = currentTimeLocat - timeLocat;
+         // 上一次滑动页面和这次滑动页面的时间等于1s时，就视作用户在某一个段时间做了停留
+        if (disTime === 1) {
+            if (moveData[currentMoveIndex] && moveData[currentMoveIndex].down === 0) {
+                moveData[currentMoveIndex].time += disTime;
+            } else {
+                moveData.push({
+                    down: "进入状态",
+                    initTime: timeLocat,
+                    initDis: currentScrollTop,
+                    sliderDis: dis,
+                    time: disTime
+                    // initTime表示进入该状态的初始时间
+                    // initDis: currentScrollTop,
+                    // initDis 表示进入该状态的初始位置
+                    // sliderDis: dis, // 在该状态内滑动的距离
+                    // time: disTime // 在该状态经历的时间（s）
+                });
+            }
+        } else {
+            // 向下滑动
+            if (dis >= 0) {
+                // 如果之前已经是向下滑动的状态，只需要在原来的数据上累加滑动距离和滑动时间
+                if (moveData[currentMoveIndex] && moveData[currentMoveIndex].down > 0) {
+                    moveData[currentMoveIndex].sliderDis += dis;
+                    moveData[currentMoveIndex].time += disTime;
+                } else {
+                    moveData.push({
+                        down: "向下",
+                        initTime: currentTime,
+                        initDis: currentScrollTop,
+                        sliderDis: dis,
+                        time: disTime
+                        // initTime表示进入该状态的初始时间
+                        // initDis: currentScrollTop,
+                        // initDis 表示进入该状态的初始位置
+                        // sliderDis: dis, // 在该状态内滑动的距离
+                        // time: disTime // 在该状态经历的时间（s）
+                    });
+                }
+            } else {
+                // 向上滑动
+                if (moveData[currentMoveIndex] && moveData[currentMoveIndex].down < 0) {
+                    moveData[currentMoveIndex].sliderDis += dis;
+                    moveData[currentMoveIndex].time += disTime;
+                } else {
+                    moveData.push({
+                        down: "向上",
+                        initTime: currentTime,
+                        initDis: currentScrollTop,
+                        sliderDis: dis,
+                        time: disTime
+                        // initTime表示进入该状态的初始时间
+                        // initDis: currentScrollTop,
+                        // initDis 表示进入该状态的初始位置
+                        // sliderDis: dis, // 在该状态内滑动的距离
+                        // time: disTime // 在该状态经历的时间（s）
+                    });
+                }
+
+            }
+        }
+        currentMoveIndex = moveData.length-1;
+        time = currentTime;
+        scrollTop = currentScrollTop;
+
+        console.log("滑动方向："+moveData[currentMoveIndex].down);
+        console.log("开始停留时间："+time);
+        console.log("停留高度："+scrollTop+"px");
+        console.log("滑动的距离："+dis+"px");
+        console.log("停留时间："+disTime+"s");
+        console.log("-------------------------------");
+    }
+    //格式化时间
+    function timer(){
+
+        let D = new Date();   //获取当前时间的时间对象
+        let yyyy = D.getFullYear();  //获取四位数字表示的年份
+        //
+        // /*获取月份，
+        // +1是因为getMonth方法返回的0(一月份)-11（十二月份）*/
+        let mm = D.getMonth()+1;
+        //
+        let dd = D.getDate();     //获取日期
+        let hh = D.getHours();    //获取小时数
+        let min = D.getMinutes();   //获取分钟数
+        let ss = D.getSeconds();    //获取秒
+        //分隔符
+        let sep1 = "/";
+        let sep2 = ":";
+//用"0"补位不足两位数的时间
+        mm = (mm<10)?("0"+mm):mm;
+
+        dd = (dd<10)?("0"+dd):dd;
+
+        hh = (hh<10)?("0"+hh):hh;
+
+        min = (min<10)?("0"+min):min;
+
+        ss = (ss<10)?("0"+ss):ss;
+
+        let format = yyyy + sep1 + mm + sep1 + dd +" "+hh+sep2+min+sep2+ss;
+        // let format =hh + sep2 + min + sep2 + ss;
+        return format;
+    }
+    //格式化时间
+    function data() {
+        let mydata = Date.now();
+        let second = Math.round(mydata/1000);
+        return second;
+    }
+    window.onscroll = function (e) {
+        clearTimeout(timeOut);
+        //
+        timeOut = setTimeout(function () {
+            move();
+        },1000);
+    };
+
+</script>
+</body>
+</html>
