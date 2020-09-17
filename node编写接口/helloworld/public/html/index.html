@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>hello world</p>
+<div class="swiper-wrapper"></div>
+
+<script id="bannerSlide" type="text/html">
+    <% for(let i = 0; i < banners.length; i++) {%>
+    <div class="swiper-slide">
+        <img src="<%=banners[i].imageUrl%>" class="fluid-img">
+    </div>
+    <% } %>
+</script>
+
+<script src="../javascripts/jquery.js"></script>
+<script src="../javascripts/axios.js"></script>
+<script src="../javascripts/api.js"></script>
+<script src="../javascripts/template-web.js"></script>
+<script src="../javascripts/index.js"></script>
+</body>
+</html>
