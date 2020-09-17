@@ -19,13 +19,13 @@
 <body>
 <div></div>
 <script>
-    let timeOut = null;
+/*    let timeOut = null;
     let scrollTop = 0;
     let currentMoveIndex = 0;
     window._stayStatus = {
         moveData: [],
     };
-    let moveData = window._stayStatus.moveData;
+    let moveData = window._stayStatus.moveData;*/
 
     function move() {
         let currentScrollTop = $("body").scrollTop() + $("html").scrollTop();
@@ -60,9 +60,24 @@
         console.log("滑动的距离："+dis+"px");
         console.log("--------------------------->");
     }
-    window.onscroll = function (e) {
-        move();
-    };
+    function hand(){
+        let scroll = window.scrollY || window.pageYOffset;
+        return function () {
+            let nowScroll = window.scrollY || window.pageYOffset;
+            if (nowScroll > scroll){
+                console.log("下");
+                scroll = window.scrollY || window.pageYOffset;
+                console.log(scroll);
+                $("div").css("background","#00bebe")
+                return;
+            }
+            scroll = window.scrollY || window.pageYOffset;
+            console.log("上");
+            console.log(scroll);
+            $("div").css("background","#f00")
+        }
+    }
+    window.onscroll = hand();
 </script>
 </body>
 </html>
