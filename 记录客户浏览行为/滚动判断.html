@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 5000px;
+            background: red;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+    let timeOut = null;
+    let scrollTop = 0;
+    let currentMoveIndex = 0;
+    window._stayStatus = {
+        moveData: [],
+    };
+    let moveData = window._stayStatus.moveData;
+
+    function move() {
+        let currentScrollTop = $("body").scrollTop() + $("html").scrollTop();
+        let dis = currentScrollTop - scrollTop;
+        if (dis >= 0) {
+            // 如果之前已经是向下滑动的状态，只需要在原来的数据上累加滑动距离和滑动时间
+            if (moveData[currentMoveIndex] && moveData[currentMoveIndex].down > 0) {
+                moveData[currentMoveIndex].sliderDis += dis;
+            } else {
+                moveData.push({
+                    down: "向下",
+                    sliderDis: dis,
+                });
+            }
+            $("div").css("background","#00bebe")
+        } else {
+            // 向上滑动
+            if (moveData[currentMoveIndex] && moveData[currentMoveIndex].down < 0) {
+                moveData[currentMoveIndex].sliderDis += dis;
+            } else {
+                moveData.push({
+                    down: "向上",
+                    sliderDis: dis,
+                });
+            }
+            $("div").css("background","#f00")
+        }
+        currentMoveIndex = moveData.length-1;
+        scrollTop = currentScrollTop;
+
+        console.log("滑动方向："+moveData[currentMoveIndex].down);
+        console.log("滑动的距离："+dis+"px");
+        console.log("--------------------------->");
+    }
+    window.onscroll = function (e) {
+        move();
+    };
+</script>
+</body>
+</html>
