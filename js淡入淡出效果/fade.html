@@ -9,13 +9,23 @@
             height: 200px;
             background: red;
             margin: 50px auto;
-            opacity: .3;
-            filter: alpha(opacity:30);
+            opacity: 1;
+        }
+        #box:hover{
+            background: blanchedalmond;
+        }
+        a{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            -webkit-tap-highlight-color:transparent;
         }
     </style>
 </head>
-<body>
-<div id="box"></div>
-<script src="fade.js"></script>
+<body ontouchstart>
+<div id="box">
+    <a href="fade2.html"></a>
+</div>
+<!--<script src="fade.js"></script>-->
 </body>
 </html>
