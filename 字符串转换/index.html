@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*把字符串 numString ="my name is ${name},l like ${hobby}"
+    * 根据数据 numArray = {name:"tom",hobby:"coding"}
+    *
+    * 转换成 theString = "my name is tom,l like coding"
+    * */
+
+    let numString = "my name is ${name},l like ${hobby}";
+    let numArray = {name:"tom",hobby:"coding"};
+
+    let theString = numString.replace(/\$\{(.*?)\}/g,function(numString,i){
+        console.log(numString);
+        console.log(k);
+        return numArray[i];
+
+    });
+    console.log(theString);
+
+</script>
+</body>
+</html>

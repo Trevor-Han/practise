@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let nowData = new Date();
+    //获取今天的是周几
+    let currentDay = nowData.getDay();
+    //把currentDay == 0赋值给周日
+    if(currentDay == 0){
+        currentDay = 7
+    }
+    // 获取周一的时间戳
+    let monDayTime = nowData.getTime() - (currentDay - 1) * 24 * 60 * 60 * 1000;
+    console.log("周一是" + new Date(monDayTime).getDate() + "号");
+    // 获取周日的时间戳
+    let sunDayTime = nowData.getTime() + (7 - currentDay) * 24 * 60 * 60 * 1000;
+    console.log("周日是" + new Date(sunDayTime).getDate() + "号");
+
+    // 获取本周周一的具体时间
+    console.log("周一 " + new Date(monDayTime).toLocaleDateString());
+    // 获取本周周日的具体时间
+    console.log("周末" + new Date(sunDayTime).toLocaleDateString());
+    // 获取当前时间的具体时间
+    console.log("当前时间" +new Date(monDayTime).toLocaleTimeString());
+</script>
+</body>
+</html>
