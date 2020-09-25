@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="txt_in">
+<p id="p_txt"></p>
+
+<script>
+    //1.利用Object.defineProperty()实现双向绑定的简洁版，缺点是直接操作DOW，效率低
+    const object1 = {};
+   //Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象
+    Object.defineProperty(object1, "property1", {
+        get:function () {
+
+        },
+        set:function (n) {
+          document.getElementById("txt_in").value = n;
+          document.getElementById("p_txt").innerHTML = n;
+        }
+    });
+/*document.addEventListener("keyup",function (e) {
+    object1.property1 = e.target.value;
+})*/
+
+// vue采用数据劫持结合发布者-订阅者模式来绑定数据，能够对数据对象的所有属性进行监听
+    //2.1 实现observe(观察)
+    // let data = {name: "kind"};
+    // observe(data);
+    // data.name = "dmq";
+
+function observe(data) {
+    // 判断如果没有传值，或者传的值不是一个对象，就直接return
+    if (!data || typeof data !== "object") {
+        return;
+    }
+    Object.keys(data).forEach(function (key) {
+        defineReactive(data,key,data[key]);
+    });
+}
+
+function defineReactive(data,key,val) {
+    observe(val); //监听子属性
+    Object.defineProperty(data,key,{
+        enumerable:true,
+        configurable:false,
+        get:function () {
+            return val;
+        },
+        set:function (n) {
+            document.getElementById("txt_in").value = val;
+            document.getElementById("p_txt").innerHTML = val;
+            val = n;
+
+        }
+    })
+}
+
+    document.addEventListener("keyup",function (e) {
+        let a = e.target.value;
+        observe(a);
+    })
+
+/*    let data = {name: "kind"};
+    Object.keys(data).forEach(function (key) {
+        console.log(data, key, data[key]);
+    });*/
+
+</script>
+</body>
+</html>

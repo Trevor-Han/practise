@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    /* var name = "jay";
+   function Person(name) {
+       this.name = name;
+       console.log(this.name);
+   }
+     var a = Person("tony");
+     /!*console.log(name);
+     console.log(a);*!/
+     var b = new Person("m");
+     console.log(b);*/
+
+    class A {};
+    class B extends A{};
+
+    const a = new A();
+    const  b = new B();
+
+    console.log(a.__proto__);
+    console.log(b.__proto__);
+    console.log(B.__proto__);
+    console.log(B.prototype__proto__);
+    console.log(b.__proto__.__proto__);
+
+    /*
+       console.log(B.prototype__proto__);
+       console.log(B.__proto__.__proto__);
+       */
+    function paddingNum(number){
+        return number.toLocaleString()
+    }
+
+    console.log(paddingNum(1236699.12))
+</script>
+</body>
+</html>
