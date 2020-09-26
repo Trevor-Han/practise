@@ -34,11 +34,40 @@
        console.log(B.prototype__proto__);
        console.log(B.__proto__.__proto__);
        */
+    // 实现分隔数字
     function paddingNum(number){
         return number.toLocaleString()
     }
+    console.log(paddingNum(1236699.12));
 
-    console.log(paddingNum(1236699.12))
+    function paddingNum1(num) {
+        let [integer, point] = num.toString().split(".");
+        let res;
+        let reg = /(\d{3})(?=\d)/g;
+        let newStr = integer.split("").reverse().join("").replace(reg, (match, $1) => {
+            return match + ","
+        });
+        newStr = newStr.split("").reverse().join("");
+        point ? res = newStr + "." + point : res = newStr;
+        return res
+
+    }
+    console.log(paddingNum1(1236699.12));
+
+
+    function dupicateWord(arr) {
+        let obj = {}
+        arr.forEach((ele) => {
+            let keys = Object.keys(obj);
+            if (!keys.includes(ele)) {
+                obj[ele]=false
+            } else {
+                obj[ele]= true
+            }
+        })
+        return obj
+    }
+    console.log(dupicateWord(['1','2','1','3']))
 </script>
 </body>
 </html>

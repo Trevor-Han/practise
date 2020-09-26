@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        content
+    </div>
+</div>
+<script>
+    function Foo() {
+        var i = 0;
+        return function() {
+            console.log(i++);
+        }
+    }
+
+    var f1 = Foo(),
+        f2 = Foo(),
+        f3 = Foo();
+    f1();
+    f1();
+    f2();
+    f3();
+
+    /*
+    * person.getAge() 其中this指向person   所以为18
+      getAget  this指向 window 没有定义
+*/
+    var person = {
+        age: 18,
+        getAge: function() {
+            return this.age;
+        }
+    };
+    var getAge = person.getAge;
+    console.log(person.getAge(),getAge());
+</script>
+
+<script>
+/*
+* 1、事件捕捉
+捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)
+2、事件冒泡
+冒泡型事件：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。
+addEventListener（type,callback,useCapture)）事件的触发阶段
+事件捕捉-->事件冒泡
+其中参数useCapture
+ture表示在事件捕捉时触发
+false表示在事件冒泡时触发
+单击content
+开始事件捕捉，document->…->box1->box2;触发了useCapture为true的事件
+输出box1 true     box2 true
+开始事件冒泡，box2->box1->…->document;触发了useCapture为false的事件
+输出box2 false    box1 false
+* */
+    const $ = document.querySelector.bind(document);
+    const box1 = $('#box1');
+    const box2 = $('#box2');
+    box1.addEventListener('click', () => {
+        console.log('box1 true');
+    }, true);
+    box1.addEventListener('click', () => {
+        console.log('box1 false');
+    }, false);
+    box2.addEventListener('click', () => {
+        console.log('box2 true');
+    }, true);
+    box2.addEventListener('click', () => {
+        console.log('box2 false');
+    }, false);
+
+
+    var j = 0;
+    for (let i = 0; i < 2; i++, j++) {
+        setTimeout(function() {
+            console.log(i, j);
+        }, 1000);
+    }
+    // 1. setTimeout()是一个异步处理函数，它会等待所有的主线程任务处理完，才开始执行自己的内部的任务，每隔1s往任务队列中添加
+    // 一个任务【闭包函数，setTimeout()中的函数，现在还没执行】
+
+    // 2. i是由let定义的，是块级作用域，因此每次循环都会绑定一个不同的i值，而j是var定义的，会形成闭包，因此输出的是最终的j值
+
+</script>
+</body>
+</html>
