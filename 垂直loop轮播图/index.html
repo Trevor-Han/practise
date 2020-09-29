@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直轮播图</title>
+    <style>
+        .con{
+            width: 400px;
+            height: 170px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .content{
+            position: relative;
+            margin-top: -55px;
+        }
+        .content p{
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            user-select: none;
+            transition: transform 0.5s;
+            opacity: 0.5;
+        }
+        .content p:nth-of-type(1){
+            transform: translateY(0);
+            opacity: 0;
+            visibility: visible;
+        }
+        .content p:nth-of-type(2){
+            transform: translateY(50px);
+        }
+        .content p:nth-of-type(3){
+            transform: translateY(100px);
+            opacity: 1;
+        }
+        .content p:nth-of-type(4){
+            transform: translateY(150px);
+        }
+        .content p:nth-of-type(5){
+            transform: translateY(200px);
+        }
+        .content p:nth-of-type(6){
+            transform: translateY(250px);
+        }
+        .content p:nth-of-type(7){
+            transform: translateY(300px);
+        }
+        .content p:nth-of-type(8){
+            transform: translateY(350px);
+        }
+        .content p:nth-of-type(9){
+            transform: translateY(400px);
+            opacity: 0;
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+<div class="con">
+    <div class="content">
+
+    </div>
+</div>
+<script src="../js/jquery.js"></script>
+<script>
+    let title = $(".content");
+    // let list = ["御 Mavic Air 2","经纬 M300 RTK","T20 植保无人飞机","DJI OM 4","RTKD DK 4","精灵 PHANTOM 4 RTK","精灵4多光谱版","禅思 Zenmuse H20"];
+    let list = [1,2,3,4,5,6,7,8];
+    let next = list.slice(list.length-2,list.length,);
+    let prev = list.slice(0,list.length-2);
+    let res =[...next, ...prev];
+    let count = 0;
+
+
+    $.each(res,function (index,value) {
+        let html = $("<p data-index="+(index+1)+" >"+value+"</p>");
+        title.append(html) ;
+    });
+    let theP = $(".content p");
+    theP.click(function (e) {
+        let index = $(this).index();
+        if(index === 1){
+            count--;
+            count = (count + 8 ) % 8;
+            title.prepend(theP[count]);
+
+        }else if(index === 3){
+            title.append(theP[count]);
+            count++;
+            count = (count + 8 ) % 8;
+        }
+    });
+
+
+</script>
+</body>
+</html>

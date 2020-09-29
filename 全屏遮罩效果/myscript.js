@@ -11,6 +11,7 @@ $(function () {
                 $(this).siblings().animate({opacity:"0"},200);
                 let heightDiv =  -($(this).offset().top)+"px";
                 let transForm = $(this).css("transform","translate(0px,"+heightDiv+")");
+                console.log(transForm);
                 $(this).animate({
                     width:"100%",
                     borderRadius:"0%",
