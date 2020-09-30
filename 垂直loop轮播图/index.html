@@ -25,6 +25,7 @@
             user-select: none;
             transition: transform 0.5s;
             opacity: 0.5;
+            font-weight: bold;
         }
         .content p:nth-of-type(1){
             transform: translateY(0);
@@ -37,6 +38,7 @@
         .content p:nth-of-type(3){
             transform: translateY(100px);
             opacity: 1;
+            color: #41b783;
         }
         .content p:nth-of-type(4){
             transform: translateY(150px);
@@ -71,7 +73,7 @@
 <script>
     let title = $(".content");
     // let list = ["御 Mavic Air 2","经纬 M300 RTK","T20 植保无人飞机","DJI OM 4","RTKD DK 4","精灵 PHANTOM 4 RTK","精灵4多光谱版","禅思 Zenmuse H20"];
-    let list = [1,2,3,4,5,6,7,8];
+    let list = [1,2,3,4,5,6,7,8,9];
     let next = list.slice(list.length-2,list.length,);
     let prev = list.slice(0,list.length-2);
     let res =[...next, ...prev];
@@ -87,13 +89,13 @@
         let index = $(this).index();
         if(index === 1){
             count--;
-            count = (count + 8 ) % 8;
+            count = (count + list.length ) % list.length;
             title.prepend(theP[count]);
 
         }else if(index === 3){
             title.append(theP[count]);
             count++;
-            count = (count + 8 ) % 8;
+            count = (count + list.length ) % list.length;
         }
     });
 

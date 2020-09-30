@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+姓名<input type="text" name=username>
+<br>
+年龄 <input type="text" name=age>
+<br>
+<button>涨一岁</button>
+<script src="../js/jquery.js"></script>
+<!--<script>
+    let obj = {
+        a : 1
+    }
+    let proxyObj = new Proxy(obj,{
+        get : function (target,prop) {
+            return prop in target ? target[prop] : 0
+        },
+        set : function (target,prop,value) {
+            target[prop] = 888;
+        }
+    })
+
+    console.log(proxyObj.a);        // 1
+    console.log(proxyObj.b);        // 0
+
+    proxyObj.a = 666;
+    console.log(proxyObj.a)         // 888
+
+</script>-->
+
+<script>
+    var data = {
+        username: 'frank',
+        age: 20
+    }
+
+    var proxy = new Proxy(data,{
+        set: function(obj, prop, value){
+            obj[prop] = value
+            $('input[name='+prop+']').val(value)
+        }
+    })
+
+    $('input[name=username]').val(data.username).on('input',function(){
+        data.username = parseInt(this.value,10)
+    })
+
+    $('input[name=age]').val(data.age).on('input',function(){
+        data.age = parseInt(this.value,10)
+    })
+
+
+    $('button').on('click', function(){
+        proxy.age += 1
+    })
+</script>
+</body>
+</html>
